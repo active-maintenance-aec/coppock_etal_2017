@@ -1,0 +1,8 @@
+file,dataverse_file_id,file_persistent_id,bytes,md5_served,md5_published,unf,served_as
+README.txt,2887315,doi:10.7910/DVN/AQB4MP/A2ZYMG,2090,ea327d0299d36ebd0f5bc1b4a01e5c6d,ea327d0299d36ebd0f5bc1b4a01e5c6d,,
+attrition_0.0.0.9000.tar.gz,2887309,doi:10.7910/DVN/AQB4MP/ZCNW1Q,34511,7fc29b91569bff874735191147a65fc8,7fc29b91569bff874735191147a65fc8,,
+commarobust_0.1.0.tar.gz,2887310,doi:10.7910/DVN/AQB4MP/SNJHJ9,8085,feef406b22d3259c23d16f91ffbaadc9,feef406b22d3259c23d16f91ffbaadc9,,
+experimental_analysis_appendix.R,2887311,doi:10.7910/DVN/AQB4MP/EEYVZ8,3756,5fc6e7d1fe25133820d96648ddb7ebfb,5fc6e7d1fe25133820d96648ddb7ebfb,,
+experimental_analysis_main_text.R,2887312,doi:10.7910/DVN/AQB4MP/PHCUG3,3668,19a3cf55e8685f65d23419cd013fae0e,19a3cf55e8685f65d23419cd013fae0e,,
+levendusky_mturk_clean.csv,2887314,doi:10.7910/DVN/AQB4MP/I2O0QS,178043,6290d4802c5331dfa550fc954ccf07d0,6290d4802c5331dfa550fc954ccf07d0,UNF:6:L7p7Dz3poguAcyQB7j5qXA==,levendusky_mturk_clean.tab
+simulation_analysis.R,2887316,doi:10.7910/DVN/AQB4MP/YARLS3,6358,ebdc8595bddfdef33ee8dde128366039,ebdc8595bddfdef33ee8dde128366039,,
