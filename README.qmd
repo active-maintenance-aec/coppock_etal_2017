@@ -170,7 +170,7 @@ No published value changes. The correction recovers two numbers the archive was 
 ```{r gt_table}
 gt |>
   mutate(across(everything(), \(x) replace_na(as.character(x), ""))) |>
-  select(table_figure, comparison, dv, stat, pdf_value, script_value, match) |>
+  select(table_figure, comparison, dv, stat, value_paper, value_script, match) |>
   kable(
     booktabs = TRUE,
     col.names = c("Location", "Comparison", "DV", "Quantity", "Paper", "Archive", "Match"),
@@ -301,7 +301,7 @@ Neither figure carries printed estimates, so there is no panel label to check th
 ```{r rewrite_verify}
 gt |>
   mutate(across(everything(), \(x) replace_na(as.character(x), ""))) |>
-  select(table_figure, comparison, dv, stat, pdf_value, value_rewrite, match_rewrite) |>
+  select(table_figure, comparison, dv, stat, value_paper, value_rewrite, match_rewrite) |>
   kable(
     booktabs = TRUE,
     col.names = c("Location", "Comparison", "DV", "Quantity", "Paper", "Rewrite", "Match"),

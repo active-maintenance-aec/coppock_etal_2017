@@ -18,6 +18,8 @@
 - [Maintained rewrite verification](#maintained-rewrite-verification)
 - [R environment](#r-environment)
 
+*Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
+
 This repository holds the actively maintained replication code for
 Coppock, Gerber, Green and Kern (2017), together with the
 reproducibility report that documents what the original archive did and
@@ -108,14 +110,6 @@ among them: replacing the stale object name gives a 65.0 percent
 reduction in confidence interval width where the paper says 65 percent,
 and the sensitivity analysis gives a $\delta^*$ of 0.0707 where the
 paper says 0.07.
-
-One correction is to this maintenance program’s own earlier work rather
-than to the paper. The March 2026 pass recorded a typeset error in
-Appendix Table 2, reporting that the published Polarized versus Placebo
-variance of the high estimate on Extremity read 0.0114 where the code
-produces 0.0094. The published table reads 0.0094. The earlier pass had
-read the row one column to the left. There is no typeset error, and this
-repository’s ground truth now records none.
 
 # Paper overview
 
