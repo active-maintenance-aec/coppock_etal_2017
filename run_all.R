@@ -29,3 +29,10 @@ source(here::here("maintained", "figure_2_sensitivity.R"))
 # In-text numbers ----
 # Reads the table and figure output above, so it runs last.
 source(here::here("maintained", "text_section_4_claims.R"))
+
+# Deposited archive, again ----
+# The check at the top of this file is a precondition: it says original/ was intact
+# before anything ran. Nothing above writes to original/, and this second pass is what
+# demonstrates it rather than assuming it. Nothing is downloaded; the files are already
+# present and are re-checked against the manifest on checksum, byte size and membership.
+source(here::here("download_original.R"))
