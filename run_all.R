@@ -30,6 +30,18 @@ source(here::here("maintained", "figure_2_sensitivity.R"))
 # Reads the table and figure output above, so it runs last.
 source(here::here("maintained", "text_section_4_claims.R"))
 
+# Ground truth and the coverage gate ----
+# build_ground_truth.R rebuilds the comparison against the published article and ends by
+# running in_text_claims.R as a program, under capture.output and in its own environment,
+# to check that every claim the extraction says needs a block has one and that the two
+# instruments agree value by value.
+source(here::here("ground_truth", "build_ground_truth.R"))
+
+# In-text claims, printed for a reader ----
+# The same file again, this time so its output lands in the log where a human can read it
+# beside the article.
+source(here::here("maintained", "in_text_claims.R"))
+
 # Deposited archive, again ----
 # The check at the top of this file is a precondition: it says original/ was intact
 # before anything ran. Nothing above writes to original/, and this second pass is what

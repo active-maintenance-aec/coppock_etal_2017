@@ -32,8 +32,14 @@ latex_out <- knitr::is_latex_output()
 # table renders as a pipe table. Each call site says what LaTeX alone gets.
 latex_only <- function(k, f) if (latex_out) f(k) else k
 
+# value_paper is forced to character in every reader. Guessed as a double it would print
+# 0.5290 as 0.529 and 0.0004 as 4e-04, losing exactly the precision the comparison tests.
 gt <- read_csv(here::here("ground_truth", "coppock_etal_2017_ground_truth.csv"),
-               show_col_types = FALSE)
+               col_types = cols(value_paper = col_character()))
+claims <- read_csv(here::here("ground_truth", "published_claims.csv"),
+                   col_types = cols(value_paper = col_character(),
+                                    digits = col_integer(),
+                                    needs_block = col_logical()))
 manifest <- read_csv(here::here("original_manifest.csv"), show_col_types = FALSE)
 ```
 
@@ -49,7 +55,7 @@ This repository holds the actively maintained replication code for Coppock, Gerb
 
 **The data are not redistributed here.** The deposit is 231 KB across seven files and lives at Harvard Dataverse, which is the only copy this repository points at. `download_original.R` fetches it and verifies every file; `original_manifest.csv` pins the file identifiers, sizes and checksums, so the exact bytes this code was written against are recorded in version control even though the bytes themselves are not.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it. `original/` is created by the download script and is deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the hand extraction of the article, `build_ground_truth.R` generates the comparison and runs the coverage gate, and `coppock_etal_2017_ground_truth.csv` is what it writes. `original/` is created by the download script and is deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains. See `LICENSE`.
 
@@ -65,24 +71,33 @@ That fetches the deposit, verifies its seven files, installs the `attrition` pac
 
 ```{r summary_setup, include=FALSE}
 n_claims <- nrow(gt)
+n_archive_comparable <- sum(!is.na(gt$match))
 n_archive_match <- sum(gt$match == 1, na.rm = TRUE)
 n_archive_fail <- sum(gt$match == 0, na.rm = TRUE)
+n_rewrite_comparable <- sum(!is.na(gt$match_rewrite))
 n_rewrite_match <- sum(gt$match_rewrite == 1, na.rm = TRUE)
+n_rewrite_fail <- sum(gt$match_rewrite == 0, na.rm = TRUE)
+n_descriptive <- sum(!is.na(gt$holds))
+n_descriptive_hold <- sum(gt$holds == 1, na.rm = TRUE)
+n_extraction <- nrow(claims)
+n_needs_block <- sum(claims$needs_block)
 ```
 
 Two questions, answered before the detail.
 
 ## Does the deposited archive run?
 
-Not without intervention, and the obstacle is a bug in the deposit rather than anything that has aged. `experimental_analysis_main_text.R` prints Tables 1, 2 and 3 and then stops at a line that subtracts rows from an object called `mturk_results`, which the script never creates. The object it means is `table_3`, assembled four lines earlier under a different name. Everything after that line, which is the 65 percent confidence interval reduction the results section quotes and the entire sensitivity analysis behind Figure 2, is unreachable. That leaves `r n_archive_fail` of the `r n_claims` recorded claims with no archive value at all, and both of them are numbers the article prints.
+Not without intervention, and the obstacle is a bug in the deposit rather than anything that has aged. `experimental_analysis_main_text.R` prints Tables 1, 2 and 3 and then stops at a line that subtracts rows from an object called `mturk_results`, which the script never creates. The object it means is `table_3`, assembled four lines earlier under a different name. Everything after that line, which is the 65 percent confidence interval reduction the results section quotes and the entire sensitivity analysis behind Figure 2, is unreachable. That leaves `r n_archive_fail` recorded claims with no archive value at all, all of them numbers the article prints: the reduction in interval width, the sensitivity parameter as Section 4.3 states it, and the same parameter as Figure 2 prints it on its face.
 
 The other two scripts run. `simulation_analysis.R` produces Figure 1 and Appendix Figure 1 with two deprecation warnings and no errors. `experimental_analysis_appendix.R` runs and reproduces Appendix Table 1 exactly, but only against the `commarobust` package as deposited. The current version of `commarobust` on GitHub also calls itself 0.1.0 and exports nothing at all: it has been reduced to a message telling the user to install `estimatr` instead. A reader who follows the archive's own README, which recommends `devtools::install_github()` over the bundled tarball, gets a package that fails on the first line that uses it, and `packageVersion()` reports the same number either way.
 
-The remaining `r n_archive_match` claims all reproduce, including every cell of all five published tables.
+The remaining `r n_archive_match` claims the archive can be compared on all reproduce, including every cell of all five published tables.
 
 ## Does the maintained rewrite reproduce the paper?
 
-Yes, without exception. All `r n_rewrite_match` recorded claims match the published values to reported precision, and the two the archive cannot reach are among them: replacing the stale object name gives a 65.0 percent reduction in confidence interval width where the paper says 65 percent, and the sensitivity analysis gives a $\delta^*$ of 0.0707 where the paper says 0.07.
+Yes, without exception. Of the `r n_claims` recorded claims, `r n_rewrite_comparable` carry a published number and all `r n_rewrite_match` match it to the precision the page prints; `r n_rewrite_fail` differ. The remaining `r n_descriptive` are claims about shape rather than value, and all `r n_descriptive_hold` hold. The three the archive cannot reach are among the matches: replacing the stale object name gives a 65.0 percent reduction in confidence interval width where the paper says 65 percent, and the sensitivity analysis gives a $\delta^*$ of 0.0707 where the paper and Figure 2 both say 0.07.
+
+No sentence in the article is contradicted by the data behind it, so this repository carries no errata document.
 
 # Paper overview
 
@@ -151,41 +166,75 @@ The maintained rewrite makes one correction to the archive's code: `mturk_result
 
 ```{r errata_table}
 tibble(
-  Claim = c("Section 4.2 reduction in 95% CI width", "Section 4.3 sensitivity parameter"),
-  Published = c("65 percent", "0.07"),
-  Archive = c("not computed, script stops", "not computed, script stops"),
-  Rewrite = c("0.6503", "0.0707")
+  Claim = c("Section 4.2 reduction in 95% CI width", "Section 4.3 sensitivity parameter",
+            "Figure 2 annotation"),
+  Published = c("65 percent", "0.07", "0.07"),
+  Archive = c("not computed, script stops", "not computed, script stops",
+              "not computed, script stops"),
+  Rewrite = c("0.6503", "0.0707", "0.0707")
 ) |>
   kable(
     booktabs = TRUE,
-    caption = "The two published claims the deposited script cannot reach, and what the rewrite produces."
+    caption = "The published claims the deposited script cannot reach, and what the rewrite produces."
   ) |>
   latex_only(\(k) k |> kable_styling(latex_options = "hold_position", font_size = 9))
 ```
 
-No published value changes. The correction recovers two numbers the archive was unable to produce; both agree with the article.
+No published value changes. The correction recovers numbers the archive was unable to produce; all of them agree with the article. That is a correction to the deposited code, which is what this section is for. It is not an erratum in the article, and there are none: every number the article prints is reproduced here, and every claim it makes about shape holds.
+
+# The extraction and the two instruments
+
+Two files stand between the article and this pipeline, and they are deliberately separate.
+
+`ground_truth/published_claims.csv` is the **extraction**: every numeric token in the article and the online appendix, read out by hand and classified. It carries `r n_extraction` rows. Citation years, equation numbers, footnote markers, section cross-references and page numbers are excluded as typography rather than claims; everything else is here, including numbers spelled out in words ("three scenarios", "two decades", "the four policy questions") that no token scan finds. `value_paper` is the string the page prints, with its digits intact, and `digits` records that precision for each claim separately, because the appendix regression table prints one R-squared at three decimals and its neighbour at four.
+
+```{r extraction_table}
+claims |>
+  count(claim_type, needs_block) |>
+  mutate(needs_block = if_else(needs_block, "yes", "no")) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Claim type", "Needs a claim block", "Rows"),
+    caption = "The extraction, by claim type."
+  ) |>
+  latex_only(\(k) k |> kable_styling(latex_options = "hold_position", font_size = 9))
+```
+
+A block is required for `r n_needs_block` of those rows. The `r n_extraction - n_needs_block` that do not need one are quantities the deposit was never going to record and that no code can therefore check: the $1.00 and $4.00 payments, the ten days between waves, the seven-point item scales, and the percentages inside the treatment articles themselves, which are quoted from the source study. They are verified against the article's own methods section and at the point of use in the scripts, and they are named here so that a reader can see the boundary rather than infer it. The simulation's outcome means and variances are in the same class: they are arguments to `attrition:::ds_manski_cis_2s()` that no output file carries, and they sit beside the call in `figure_1_simulation.R`.
+
+`maintained/in_text_claims.R` is the **second instrument**. It reads only `maintained/output/`, never the ground truth, and it recomputes each claimed number by its own path: the prose figures of Section 4.2 are derived there from `table_3_bounds_main.csv` and `table_a1_mipo_effects.csv` rather than read out of `text_section_4_claims.csv`, which is the file the ground truth reads. It prints one line per claim, and `ground_truth/build_ground_truth.R` runs it as a program, in its own environment, and asserts three things: that the number of claims printed equals the number the extraction requires, that the two sets of identifiers are equal in both directions, and that every printed value equals the ground truth's own value rendered at the same precision.
+
+Two of the article's claims are checkable only because a second quantity can be recovered from the tables the article prints. Section 4.2 says missing outcomes are replaced with the lowest possible value of 0 and the highest of 6. Neither limit appears in any output file, but with the response rates of Table 1 and the initial-responder means of Table 2, the worst-case low and high estimates of Table 3 are two linear equations in exactly those two limits, and solving them returns 0 and 6.
+
+Coverage of the published floats is complete for the tables: 15 of 15 cells in Table 1, 12 of 12 in Table 2, 18 of 18 in Table 3, 32 of 32 in Appendix Table 1 and 36 of 36 in Appendix Table 2, or 113 published cells with 113 rows. The three figures print no estimates except the $\delta^* = 0.07$ that Figure 2 carries on its face, which is covered. What the figures do assert is shape, and those assertions are covered by claims with computed truth values rather than by cells: that the identification region collapses to a point when everyone responds to the follow-up, that at a follow-up response rate of zero its width returns to the worst-case width of $2(1 - p_1)$, that it narrows as the initial response rate rises, and that raising the sample size a hundredfold shrinks the confidence interval while leaving the identification region unchanged to the last decimal.
 
 # Number-by-number comparison
 
 ```{r gt_table}
 gt |>
+  left_join(select(claims, claim_id, digits), by = "claim_id") |>
+  # The archive's values are shown at the precision the page prints, so that a small
+  # R-squared arrives as 0.0004 rather than as as.character()'s 4e-04.
+  mutate(value_script = if_else(is.na(value_script), NA_character_,
+                                sprintf(paste0("%.", replace_na(digits, 0L), "f"),
+                                        value_script))) |>
   mutate(across(everything(), \(x) replace_na(as.character(x), ""))) |>
-  select(table_figure, comparison, dv, stat, value_paper, value_script, match) |>
+  select(table_figure, claim_id, value_paper, value_script, match) |>
   kable(
     booktabs = TRUE,
-    col.names = c("Location", "Comparison", "DV", "Quantity", "Paper", "Archive", "Match"),
-    caption = "Ground truth: published value against the value the deposited scripts produce on current R. A blank Archive cell means the script stops before reaching the quantity."
+    col.names = c("Location", "Claim", "Paper", "Archive", "Match"),
+    caption = "Ground truth: published value against the value the deposited scripts produce on current R. A blank Archive cell means the script stops before reaching the quantity, or that no archive counterpart to that quantity was measured."
   ) |>
   latex_only(\(k) k |>
     kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 5) |>
-    column_spec(4, width = "3cm"))
+    column_spec(2, width = "5cm"))
 ```
 
-Of the `r n_claims` recorded claims, `r n_archive_match` match the published value and `r n_archive_fail` are unreachable, both because of the stale object name.
+Of the `r n_claims` recorded claims, `r n_archive_comparable` can be compared against the deposited scripts. `r n_archive_match` match the published value and `r n_archive_fail` are unreachable, all because of the stale object name.
 
 # Maintained rewrite
 
-The rewrite lives in `maintained/`: eight scripts covering the three main text tables, the two appendix tables, both figures, and the numbers Sections 4.2 and 4.3 state in prose. It is a translation, not a reanalysis: every estimator, specification and sample restriction is the one the paper used, and the `attrition` functions that implement the method (`estimator_ev`, `estimator_ds`, `sensitivity_ds`, and the internal `ds_manski_cis_2s` the simulation calls) are used unchanged, since they are the paper's contribution rather than incidental tooling.
+The rewrite lives in `maintained/`: nine scripts covering the three main text tables, the two appendix tables, both figures, the numbers Sections 4.2 and 4.3 state in prose, and the claim-by-claim audit. It is a translation, not a reanalysis: every estimator, specification and sample restriction is the one the paper used, and the `attrition` functions that implement the method (`estimator_ev`, `estimator_ds`, `sensitivity_ds`, and the internal `ds_manski_cis_2s` the simulation calls) are used unchanged, since they are the paper's contribution rather than incidental tooling.
 
 ```{r arch_table}
 tibble(
@@ -198,7 +247,8 @@ tibble(
     "table_a2_pairwise_bounds.R",
     "figure_1_simulation.R",
     "figure_2_sensitivity.R",
-    "text_section_4_claims.R"
+    "text_section_4_claims.R",
+    "in_text_claims.R"
   ),
   Produces = c(
     "packages, data, shared row labels",
@@ -209,7 +259,8 @@ tibble(
     "Appendix Table 2: bounds for all pairwise comparisons",
     "Figure 1 and Appendix Figure 1: the simulation study",
     "Figure 2: the sensitivity analysis",
-    "the prose numbers in Sections 4.2 and 4.3"
+    "the prose numbers in Sections 4.2 and 4.3",
+    "one printed line per published claim, recomputed independently"
   )
 ) |>
   kable(booktabs = TRUE, caption = "Scripts in the maintained rewrite.") |>
@@ -301,18 +352,18 @@ Neither figure carries printed estimates, so there is no panel label to check th
 ```{r rewrite_verify}
 gt |>
   mutate(across(everything(), \(x) replace_na(as.character(x), ""))) |>
-  select(table_figure, comparison, dv, stat, value_paper, value_rewrite, match_rewrite) |>
+  select(table_figure, claim_id, value_paper, value_rewrite, match_rewrite, holds) |>
   kable(
     booktabs = TRUE,
-    col.names = c("Location", "Comparison", "DV", "Quantity", "Paper", "Rewrite", "Match"),
-    caption = "Maintained rewrite verification: published value against rewrite output."
+    col.names = c("Location", "Claim", "Paper", "Rewrite", "Match", "Holds"),
+    caption = "Maintained rewrite verification: published value against rewrite output. A row with a Holds verdict and no value is a claim about shape rather than about a number."
   ) |>
   latex_only(\(k) k |>
     kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 5) |>
-    column_spec(4, width = "3cm"))
+    column_spec(2, width = "5cm"))
 ```
 
-Every row carries `match_rewrite = 1`: **`r n_rewrite_match`** values produced by the maintained rewrite, all matching the published paper to reported precision. Every one of them is read out of a file in `maintained/output/` rather than transcribed, so a value in this table that disagreed with the pipeline would be a failure of the pipeline and not of the transcription.
+Every comparable row carries `match_rewrite = 1`: **`r n_rewrite_match`** values produced by the maintained rewrite, all matching the published paper to the precision the page prints, and **`r n_descriptive_hold`** descriptive claims that hold. Every value here is read out of a file in `maintained/output/` by `build_ground_truth.R` rather than transcribed, so a value in this table that disagreed with the pipeline would be a failure of the pipeline and not of the transcription.
 
 # R environment
 

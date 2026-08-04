@@ -10,6 +10,10 @@ library(kableExtra)
 library(gridExtra)
 library(attrition)
 
+# Anchors a script run on its own rather than through run_all.R, which is what the
+# reproduction instructions tell a reader they may do.
+here::i_am("maintained/helpers.R")
+
 # modelsummary defaults to the tabularray LaTeX factory and to siunitx number macros, so
 # its output would need two packages the other tables here do not use. These options put
 # it on the same kableExtra and booktabs footing as the hand-built tables.
