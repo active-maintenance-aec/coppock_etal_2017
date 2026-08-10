@@ -637,10 +637,10 @@ that figure diffable rather than merely inspectable.
 | section_4.1_p14 | app_n_subjects | 1980 | 1980 | 1 |  |
 | section_4.2_p14 | app_outcome_max | 6 | 6 | 1 |  |
 | section_4.2_p14 | app_outcome_min | 0 | -8.04095352393955e-16 | 1 |  |
-| section_4.2_p14 | txt_ci_width_ds_ps | 1.23 | 1.22561085781092 | 1 |  |
-| section_4.2_p14 | txt_ci_width_no_ds | 3.50 | 3.50496018401971 | 1 |  |
-| section_4.2_p14 | txt_ds_ps_ci_lower | -0.53 | -0.529010551043845 | 1 |  |
-| section_4.2_p14 | txt_ds_ps_ci_upper | 0.70 | 0.696600306767075 | 1 |  |
+| section_4.2_p14 | txt_ci_width_ds_ps | 1.23 | 1.22561085834396 | 1 |  |
+| section_4.2_p14 | txt_ci_width_no_ds | 3.50 | 3.50496018440374 | 1 |  |
+| section_4.2_p14 | txt_ds_ps_ci_lower | -0.53 | -0.529010551320638 | 1 |  |
+| section_4.2_p14 | txt_ds_ps_ci_upper | 0.70 | 0.696600307023322 | 1 |  |
 | section_4.2_p14 | txt_ds_ps_wcb_high | 0.53 | 0.525683688852529 | 1 |  |
 | section_4.2_p14 | txt_ds_ps_wcb_low | -0.34 | -0.344389910863888 | 1 |  |
 | section_4.2_p14 | txt_ds_wcb_high | 0.57 | 0.571815728388134 | 1 |  |
@@ -648,11 +648,11 @@ that figure diffable rather than merely inspectable.
 | section_4.2_p14 | txt_naive_ate_coef | 0.126 | 0.125886650690805 | 1 |  |
 | section_4.2_p14 | txt_naive_ate_pval | 0.057 | 0.0571779950234009 | 1 |  |
 | section_4.2_p14 | txt_naive_ate_se | 0.066 | 0.0661527954807814 | 1 |  |
-| section_4.2_p14 | txt_no_ds_ci_lower | -1.67 | -1.66907903866295 | 1 |  |
-| section_4.2_p14 | txt_no_ds_ci_upper | 1.84 | 1.83588114535676 | 1 |  |
+| section_4.2_p14 | txt_no_ds_ci_lower | -1.67 | -1.66907903885775 | 1 |  |
+| section_4.2_p14 | txt_no_ds_ci_upper | 1.84 | 1.83588114554598 | 1 |  |
 | section_4.2_p14 | txt_no_ds_wcb_high | 1.71 | 1.70966762747749 | 1 |  |
 | section_4.2_p14 | txt_no_ds_wcb_low | -1.54 | -1.53914496339566 | 1 |  |
-| section_4.2_p14 | txt_reduction_pct | 0.65 | 0.650321032632869 | 1 |  |
+| section_4.2_p14 | txt_reduction_pct | 0.65 | 0.650321032519101 | 1 |  |
 | section_4.3_p15 | app_naive_sig_10 |  |  |  | 1 |
 | section_4.3_p15 | app_no_delta_star_05 |  |  |  | 1 |
 | section_4.3_p15 | txt_delta_star | 0.07 | 0.0707070707070707 | 1 |  |
@@ -686,10 +686,10 @@ that figure diffable rather than merely inspectable.
 | table_2 | t2_polarized_ir_sd | 1.270 | 1.27045080160387 | 1 |  |
 | table_3 | app_ds_narrows |  |  |  | 1 |
 | table_3 | app_wcb_uninformative |  |  |  | 1 |
-| table_3 | t3_ds_ci_lower | -0.5283 | -0.528309673828183 | 1 |  |
-| table_3 | t3_ds_ci_upper | 0.7452 | 0.745174826173985 | 1 |  |
-| table_3 | t3_ds_ps_ci_lower | -0.5290 | -0.529010551043845 | 1 |  |
-| table_3 | t3_ds_ps_ci_upper | 0.6966 | 0.696600306767075 | 1 |  |
+| table_3 | t3_ds_ci_lower | -0.5283 | -0.52830967410789 | 1 |  |
+| table_3 | t3_ds_ci_upper | 0.7452 | 0.745174826433894 | 1 |  |
+| table_3 | t3_ds_ps_ci_lower | -0.5290 | -0.529010551320638 | 1 |  |
+| table_3 | t3_ds_ps_ci_upper | 0.6966 | 0.696600307023322 | 1 |  |
 | table_3 | t3_ds_ps_var_high | 0.0108 | 0.0107972726598501 | 1 |  |
 | table_3 | t3_ds_ps_var_low | 0.0126 | 0.0125981273119329 | 1 |  |
 | table_3 | t3_ds_ps_wcb_high | 0.5257 | 0.525683688852529 | 1 |  |
@@ -698,8 +698,8 @@ that figure diffable rather than merely inspectable.
 | table_3 | t3_ds_var_low | 0.0129 | 0.0128647858310974 | 1 |  |
 | table_3 | t3_ds_wcb_high | 0.5718 | 0.571815728388134 | 1 |  |
 | table_3 | t3_ds_wcb_low | -0.3417 | -0.34174537662934 | 1 |  |
-| table_3 | t3_no_ds_ci_lower | -1.6691 | -1.66907903866295 | 1 |  |
-| table_3 | t3_no_ds_ci_upper | 1.8359 | 1.83588114535676 | 1 |  |
+| table_3 | t3_no_ds_ci_lower | -1.6691 | -1.66907903885775 | 1 |  |
+| table_3 | t3_no_ds_ci_upper | 1.8359 | 1.83588114554598 | 1 |  |
 | table_3 | t3_no_ds_var_high | 0.0059 | 0.00588785669626298 | 1 |  |
 | table_3 | t3_no_ds_var_low | 0.0062 | 0.0062401008346893 | 1 |  |
 | table_3 | t3_no_ds_wcb_high | 1.7097 | 1.70966762747749 | 1 |  |
@@ -736,38 +736,38 @@ that figure diffable rather than merely inspectable.
 | table_a1 | ta1_polarized_pp_wave1_se | 0.067 | 0.0665244501080027 | 1 |  |
 | table_a1 | ta1_polarized_pp_wave2_coef | 0.126 | 0.125886650690805 | 1 |  |
 | table_a1 | ta1_polarized_pp_wave2_se | 0.066 | 0.0661527954807814 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_ci_lower | -0.4778 | -0.477842686955451 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_ci_upper | 0.5769 | 0.576929833172395 | 1 |  |
+| table_a2 | ta2_mod_vs_placebo_ex_ci_lower | -0.4778 | -0.477842687179526 | 1 |  |
+| table_a2 | ta2_mod_vs_placebo_ex_ci_upper | 0.5769 | 0.57692983337372 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_var_high | 0.0067 | 0.00666486134438053 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_var_low | 0.0083 | 0.00825624817098751 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_wcb_high | 0.4426 | 0.442646282695529 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_wcb_low | -0.3284 | -0.328384873083366 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_pp_ci_lower | -0.6119 | -0.611862038277648 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_pp_ci_upper | 0.5044 | 0.504351636505354 | 1 |  |
+| table_a2 | ta2_mod_vs_placebo_pp_ci_lower | -0.6119 | -0.611862038531696 | 1 |  |
+| table_a2 | ta2_mod_vs_placebo_pp_ci_upper | 0.5044 | 0.504351636768822 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_pp_var_high | 0.0114 | 0.0114143454384199 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_pp_var_low | 0.0106 | 0.0106127353002281 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_pp_wcb_high | 0.3286 | 0.328618863548512 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_pp_wcb_low | -0.4424 | -0.442412292230382 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_ci_lower | -0.6087 | -0.608731542807715 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_ci_upper | 0.6032 | 0.603194110336677 | 1 |  |
+| table_a2 | ta2_pol_vs_mod_ex_ci_lower | -0.6087 | -0.608731543014259 | 1 |  |
+| table_a2 | ta2_pol_vs_mod_ex_ci_upper | 0.6032 | 0.603194110577457 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_ex_var_high | 0.0095 | 0.00953316194586098 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_ex_var_low | 0.0070 | 0.00701487544541756 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_ex_wcb_high | 0.4426 | 0.442594036170701 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_ex_wcb_low | -0.4710 | -0.470967068846772 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_pp_ci_lower | -0.5283 | -0.528309673828183 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_pp_ci_upper | 0.7452 | 0.745174826173985 | 1 |  |
+| table_a2 | ta2_pol_vs_mod_pp_ci_lower | -0.5283 | -0.52830967410789 | 1 |  |
+| table_a2 | ta2_pol_vs_mod_pp_ci_upper | 0.7452 | 0.745174826433894 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_pp_var_high | 0.0111 | 0.0111080739914738 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_pp_var_low | 0.0129 | 0.0128647858310974 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_pp_wcb_high | 0.5718 | 0.571815728388134 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_pp_wcb_low | -0.3417 | -0.34174537662934 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_ci_lower | -0.6004 | -0.600425131380988 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_ci_upper | 0.6944 | 0.69438536025314 | 1 |  |
+| table_a2 | ta2_pol_vs_placebo_ex_ci_lower | -0.6004 | -0.600425131607832 | 1 |  |
+| table_a2 | ta2_pol_vs_placebo_ex_ci_upper | 0.6944 | 0.694385360492085 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_ex_var_high | 0.0094 | 0.00938841779116446 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_ex_var_low | 0.0085 | 0.00846151811732802 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_ex_wcb_high | 0.5350 | 0.535009163087335 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_ex_wcb_low | -0.4491 | -0.449120786151243 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_pp_ci_lower | -0.6171 | -0.617118472435792 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_pp_ci_upper | 0.7262 | 0.726201233938733 | 1 |  |
+| table_a2 | ta2_pol_vs_placebo_pp_ci_lower | -0.6171 | -0.617118472710443 | 1 |  |
+| table_a2 | ta2_pol_vs_placebo_pp_ci_upper | 0.7262 | 0.726201234202598 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_pp_var_high | 0.0114 | 0.0114487996375541 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_pp_var_low | 0.0124 | 0.012403901338986 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_pp_wcb_high | 0.5502 | 0.550203436157751 | 1 |  |
@@ -791,11 +791,11 @@ not of the transcription.
 |:----------|:-----------------------|
 | R version | 4.6.0                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-08-03             |
+| Date run  | 2026-08-10             |
 
 | Package      | Version |
 |:-------------|:--------|
-| attrition    | 0.1.0   |
+| attrition    | 1.0.0   |
 | estimatr     | 1.0.6   |
 | modelsummary | 2.6.0   |
 | dplyr        | 1.2.1   |
