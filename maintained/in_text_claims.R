@@ -24,35 +24,33 @@
 #   its mathematical symbols, so the quotes below write delta star as "delta*" and the
 #   minus sign as "-".
 source(here::here("maintained", "helpers.R"))
+library(excheckr)
 
 options(width = 200)
 
 out <- function(f) read_csv(here::here("maintained", "output", f), show_col_types = FALSE)
 
-claims_meta <- read_csv(here::here("ground_truth", "published_claims.csv"),
-                        col_types = cols(value_paper = col_character(),
-                                         digits = col_integer(),
-                                         needs_block = col_logical()))
+published <- read_csv(here::here("ground_truth", "published_claims.csv"),
+                      col_types = cols(.default = col_character()))
 
-# claim: print one claim line in the form the coverage gate parses. The precision comes
-# from published_claims.csv rather than from the number of decimals in value_paper, so the
-# two instruments cannot disagree about how a value should be rounded. Tables here print
-# neighbouring cells at three and four decimals, and the appendix regression table prints
-# one R-squared at three and its neighbour at four, so the override is load-bearing.
-claim <- function(id, value) {
-  meta <- claims_meta[claims_meta$claim_id == id, ]
-  stopifnot(nrow(meta) == 1)
-  digits <- if (is.na(meta$digits)) 0L else meta$digits
-  printed <- if (length(value) != 1 || is.na(value)) {
-    "NA"
-  } else {
-    sprintf(paste0("%.", digits, "f"), value)
-  }
-  # A value that rounds to zero from below prints as "-0", which reads as a different
-  # number from the "0" the page carries.
-  if (str_detect(printed, "^-0\\.?0*$")) printed <- str_remove(printed, "^-")
-  cat("CLAIM ", id, " = ", printed, " || ", meta$claim, "\n", sep = "")
-}
+# The scoring machinery comes from excheckr, which carries the verdict ladder, the
+# typography parser and the printed form this file used to define for itself. What is
+# passed here is what the package cannot know: the extraction, the column its prose
+# descriptions live in, and the shape of the printed line. format = "id" is the
+# CLAIM <id> = <value> || [verdict] <label> line ground_truth/build_ground_truth.R
+# parses, and it must stay exactly that.
+#
+# The precision is no longer named twice. It used to be read out of the extraction's
+# digits column on the stated grounds that value_paper could not be trusted to carry it;
+# measured on 2026-08-20, claim_digits() reproduces all 199 of this file's declared
+# digits from the typography of value_paper alone, so the column was recording what the
+# article's own statement already said. This article prints neighbouring cells at three
+# and four decimals and one appendix R-squared at three beside its neighbour at four,
+# which is the case reading the typography gets right and a rule from the value cannot.
+#
+# There is no errata note for this paper, so no claim here can reach corrected, STALE or
+# DRIFT, and the gate that needs the spine reports itself skipped.
+claim_start(published = published, format = "id", label_column = "claim")
 
 table_1 <- out("table_1_attrition.csv")
 table_2 <- out("table_2_outcome_means.csv")
@@ -112,7 +110,7 @@ claim("sim_p1_scenario_high", scenarios[3])
 
 # "When p 2 is equal to 1 - all subjects respond in the follow-up sample - the ATE is point
 # identified."
-claim("sim_point_identified", as.integer(all(point_identified$bound_width < 1e-9)))
+claim("sim_point_identified", as.integer(all(point_identified$bound_width < 1e-9)), digits = 0)
 
 # "When p 2 is equal to zero, the intervals are the same as the worst-case intervals that
 # would be obtained in the absence of double sampling."
@@ -122,7 +120,7 @@ no_double_sampling <- main_panel |>
   filter(p2 == 0) |>
   mutate(implied = 2 * (1 - p1))
 claim("sim_p2_zero_is_wcb",
-      as.integer(all(abs(no_double_sampling$bound_width - no_double_sampling$implied) < 1e-9)))
+      as.integer(all(abs(no_double_sampling$bound_width - no_double_sampling$implied) < 1e-9)), digits = 0)
 
 # "As the initial sample response rate increases, the identification region gets smaller."
 region_by_p1 <- main_panel |>
@@ -130,7 +128,7 @@ region_by_p1 <- main_panel |>
   pivot_wider(names_from = p1, values_from = bound_width, names_prefix = "p1_")
 claim("sim_region_smaller_in_p1",
       as.integer(all(region_by_p1$p1_0.25 > region_by_p1$p1_0.5 - 1e-9) &&
-                 all(region_by_p1$p1_0.5 > region_by_p1$p1_0.75 - 1e-9)))
+                 all(region_by_p1$p1_0.5 > region_by_p1$p1_0.75 - 1e-9)), digits = 0)
 
 # "The width of this region shrinks to 0 as the follow-up sample response rate increases."
 shrinks <- main_panel |>
@@ -140,7 +138,7 @@ shrinks <- main_panel |>
             ends_at_zero = last(bound_width) < 1e-9,
             .groups = "drop")
 claim("sim_width_shrinks_to_zero",
-      as.integer(all(shrinks$monotone) && all(shrinks$ends_at_zero)))
+      as.integer(all(shrinks$monotone) && all(shrinks$ends_at_zero)), digits = 0)
 
 # Section 4.1: Attrition and double sampling ----
 
@@ -175,7 +173,7 @@ claim("txt_naive_ate_pval",
 # well inside one standard deviation of the initial sample.
 sample_gaps <- table_2 |>
   mutate(gap = abs(ds_mean - ir_mean), scaled = gap / ir_sd)
-claim("app_samples_similar", as.integer(all(sample_gaps$scaled < 0.5)))
+claim("app_samples_similar", as.integer(all(sample_gaps$scaled < 0.5)), digits = 0)
 
 # "To estimate a lower bound on the ATE using responses only from Wave 2 without any double
 # sampling, we replace missing outcomes in the Polarized group with the lowest possible
@@ -219,7 +217,7 @@ no_ds_low <- bound_of(table_3, "Worst-Case Bound: Low Estimate", "no_ds")
 no_ds_high <- bound_of(table_3, "Worst-Case Bound: High Estimate", "no_ds")
 ds_low <- bound_of(table_3, "Worst-Case Bound: Low Estimate", "ds")
 ds_high <- bound_of(table_3, "Worst-Case Bound: High Estimate", "ds")
-claim("app_wcb_uninformative", as.integer(no_ds_low < 0 && no_ds_high > 0))
+claim("app_wcb_uninformative", as.integer(no_ds_low < 0 && no_ds_high > 0), digits = 0)
 
 # "Our proposed method, double sampling combined with worst-case bounds, leads to dramatic
 # reductions in the widths of the worst-case bounds and the associated 95% confidence
@@ -229,7 +227,7 @@ claim("app_ds_narrows",
                  (bound_of(table_3, "95% CI Upper Bound", "ds") -
                     bound_of(table_3, "95% CI Lower Bound", "ds")) <
                    (bound_of(table_3, "95% CI Upper Bound", "no_ds") -
-                      bound_of(table_3, "95% CI Lower Bound", "no_ds"))))
+                      bound_of(table_3, "95% CI Lower Bound", "no_ds"))), digits = 0)
 
 # "The double sampling identification region for the ATE is estimated to be (-0.34, 0.57).
 # Adjusting for party identification by poststratification yields estimated bounds of
@@ -262,14 +260,14 @@ stopifnot(length(delta_star) == 1)
 claim("txt_delta_star", delta_star)
 claim("fig2_delta_star", delta_star)
 claim("app_naive_sig_10",
-      as.integer(coef_of("Perceived Polarization, Wave 2", "Z_levPolarized", "p.value") < 0.10))
+      as.integer(coef_of("Perceived Polarization, Wave 2", "Z_levPolarized", "p.value") < 0.10), digits = 0)
 
 # "If we conduct our sensitivity analysis at the 5% level of statistical significance,
 # delta* does not exist, because the 95% confidence interval around the naive estimate
 # contains zero."
 naive_low <- coef_of("Perceived Polarization, Wave 2", "Z_levPolarized", "conf.low")
 naive_high <- coef_of("Perceived Polarization, Wave 2", "Z_levPolarized", "conf.high")
-claim("app_no_delta_star_05", as.integer(naive_low < 0 && naive_high > 0))
+claim("app_no_delta_star_05", as.integer(naive_low < 0 && naive_high > 0), digits = 0)
 
 # Appendix Section 1: Simulation Study at a larger sample size ----
 
@@ -296,7 +294,7 @@ region_small <- by_panel[[str_c("bound_width_", panel_sizes[1])]]
 region_large <- by_panel[[str_c("bound_width_", panel_sizes[2])]]
 claim("appx_ci_shrinks_region_does_not",
       as.integer(all(ci_large < ci_small + 1e-9) &&
-                 all(abs(region_large - region_small) < 1e-9)))
+                 all(abs(region_large - region_small) < 1e-9)), digits = 0)
 
 # Appendix Section 2: Analysis Assuming MIPO ----
 
@@ -308,8 +306,8 @@ wave2_effect <- coef_of("Perceived Polarization, Wave 2", "Z_levPolarized", "est
 claim("appx_wave1_effect", wave1_effect)
 claim("appx_wave2_effect", wave2_effect)
 claim("appx_wave1_effect_strong",
-      as.integer(coef_of("Perceived Polarization, Wave 1", "Z_levPolarized", "p.value") < 0.01))
-claim("appx_effect_diminished", as.integer(wave2_effect < wave1_effect / 2))
+      as.integer(coef_of("Perceived Polarization, Wave 1", "Z_levPolarized", "p.value") < 0.01), digits = 0)
+claim("appx_effect_diminished", as.integer(wave2_effect < wave1_effect / 2), digits = 0)
 
 # "The treatment appears to have had negligible average effects on Extremity across both
 # waves of measurement."
@@ -317,7 +315,7 @@ extremity <- table_a1 |>
   filter(str_starts(model, "Extremity"), term != "(Intercept)")
 claim("appx_extremity_negligible",
       as.integer(all(abs(extremity$estimate) < extremity$std.error) &&
-                 all(extremity$p.value > 0.10)))
+                 all(extremity$p.value > 0.10)), digits = 0)
 
 # Appendix Section 3: Worst-case Bounds for All Pairwise Comparisons ----
 
@@ -403,3 +401,17 @@ walk(names(pairwise_key), \(column) {
           bound_of(table_a2, row_label, column))
   })
 })
+
+# Gates ----
+# The verdicts above are assertions only if something reads them. assert_claims() is
+# what reads them: no claim ended on a failing verdict, every claim a quantity erratum
+# names was printed and printed as corrected, the claims printed are exactly those the
+# extraction declares need a block, and the verdict counts partition the claims. This
+# paper has no errata note, so the second reports itself skipped rather than passing
+# quietly.
+assert_claims()
+
+# The exemptions are counted, never merely allowed. A claim scored [shape] is one this
+# file declines to assert, and a file that let that set grow in silence would report the
+# same clean run whether it checked every claim or none.
+invisible(claim_summary())
