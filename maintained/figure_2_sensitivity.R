@@ -25,14 +25,16 @@ write_csv(sims, here::here("maintained", "output", "figure_2_sensitivity.csv"))
 
 # The figure is rebuilt here from sims rather than taken from the ggplot object
 # sensitivity_ds() returns, so that everything drawn is produced by this repository.
-delta_star <- sims |> filter(change_any) |> pull(p)
+# delta* comes off the returned list, which reports the smallest crossing as a single
+# number and NA when the interval covers zero throughout.
+delta_star <- sensitivity$delta_star
 
 endpoints <- tibble(
-  p = c(0, 1, 1),
+  delta = c(0, 1, 1),
   value = c(
-    sims$low_est[sims$p == 0],
-    sims$low_est[sims$p == 1],
-    sims$upp_est[sims$p == 1]
+    sims$estimate_lower[sims$delta == 0],
+    sims$estimate_lower[sims$delta == 1],
+    sims$estimate_upper[sims$delta == 1]
   ),
   label = c("Naive Estimate", "Worst Case Lower Bound", "Worst Case Upper Bound"),
   hjust = c(-0.3, 1.1, 1.1),
@@ -40,15 +42,15 @@ endpoints <- tibble(
 )
 
 delta_star_point <- tibble(
-  p = delta_star,
+  delta = delta_star,
   value = 0,
   label = paste0("delta^'*' == ", sprintf("%.2f", delta_star))
 )
 
-g <- ggplot(sims, aes(x = p)) +
-  geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = 0.2) +
-  geom_line(aes(y = low_est), alpha = 0.5) +
-  geom_line(aes(y = upp_est), alpha = 0.5) +
+g <- ggplot(sims, aes(x = delta)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.2) +
+  geom_line(aes(y = estimate_lower), alpha = 0.5) +
+  geom_line(aes(y = estimate_upper), alpha = 0.5) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   geom_point(data = endpoints, aes(y = value)) +
   geom_text(data = endpoints,

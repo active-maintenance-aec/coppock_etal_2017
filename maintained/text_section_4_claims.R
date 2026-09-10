@@ -47,7 +47,7 @@ claims <- tribble(
   "95% CI width without double sampling", ci_width_no_ds,
   "95% CI width with double sampling and poststratification", ci_width_ds_ps,
   "Proportional reduction in 95% CI width", (ci_width_no_ds - ci_width_ds_ps) / ci_width_no_ds,
-  "Sensitivity parameter delta star", sensitivity$p[sensitivity$change_any]
+  "Sensitivity parameter delta star", sensitivity$delta[sensitivity$change_any]
 )
 
 print(claims, n = nrow(claims))

@@ -2,17 +2,17 @@ claim,value
 "Naive ATE on Perceived Polarization, Wave 2",0.12588665069080543
 Naive ATE standard error,0.0661527954807814
 Naive ATE two-sided p-value,0.05717799502340086
-"Worst-case bound without double sampling, low",-1.5391449633956586
-"Worst-case bound without double sampling, high",1.7096676274774891
-"95% CI without double sampling, lower",-1.669079038857752
-"95% CI without double sampling, upper",1.8358811455459831
+"Worst-case bound without double sampling, low",-1.539144963395659
+"Worst-case bound without double sampling, high",1.7096676274774896
+"95% CI without double sampling, lower",-1.6690790388577523
+"95% CI without double sampling, upper",1.835881145545984
 "Double sampling identification region, low",-0.3417453766293397
 "Double sampling identification region, high",0.5718157283881338
-"Poststratified identification region, low",-0.34438991086388754
+"Poststratified identification region, low",-0.3443899108638877
 "Poststratified identification region, high",0.5256836888525288
-"Poststratified 95% CI, lower",-0.529010551320638
+"Poststratified 95% CI, lower",-0.5290105513206382
 "Poststratified 95% CI, upper",0.6966003070233224
-95% CI width without double sampling,3.5049601844037355
-95% CI width with double sampling and poststratification,1.2256108583439604
-Proportional reduction in 95% CI width,0.6503210325191008
+95% CI width without double sampling,3.5049601844037364
+95% CI width with double sampling and poststratification,1.2256108583439607
+Proportional reduction in 95% CI width,0.6503210325191007
 Sensitivity parameter delta star,0.07070707070707072

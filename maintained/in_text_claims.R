@@ -98,7 +98,7 @@ claim("sim_p2_max", max(figure_1$p2))
 # At a follow-up response rate of 1 nothing is imputed, so the identification region
 # collapses onto the true effect and the grid states it rather than assuming it.
 point_identified <- figure_1 |> filter(p2 == 1)
-claim("sim_true_ate", unique(c(point_identified$low_est, point_identified$upp_est)))
+claim("sim_true_ate", unique(c(point_identified$estimate_lower, point_identified$estimate_upper)))
 
 # "We consider three scenarios, corresponding to an initial sample response rate of 0.25,
 # 0.50, or 0.75."
@@ -255,7 +255,7 @@ claim("txt_reduction_pct", (width_no_ds - width_ds_ps) / width_no_ds)
 # "As shown in Figure 2, we obtain a delta* of 0.07, implying that the statistically
 # significant (at the 10% level) naive estimate is very sensitive to even small violations
 # of ignorability."
-delta_star <- figure_2$p[figure_2$change_any]
+delta_star <- figure_2$delta[figure_2$change_any]
 stopifnot(length(delta_star) == 1)
 claim("txt_delta_star", delta_star)
 claim("fig2_delta_star", delta_star)

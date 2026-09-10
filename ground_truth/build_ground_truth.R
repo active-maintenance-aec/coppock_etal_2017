@@ -130,7 +130,7 @@ width_no_ds <- bound_of(table_3, "95% CI Upper Bound", "no_ds") -
 width_ds_ps <- bound_of(table_3, "95% CI Upper Bound", "ds_ps") -
   bound_of(table_3, "95% CI Lower Bound", "ds_ps")
 
-delta_star <- figure_2$p[figure_2$change_any]
+delta_star <- figure_2$delta[figure_2$change_any]
 stopifnot(length(delta_star) == 1)
 
 total_row <- table_1 |> filter(condition == "Total")
@@ -168,7 +168,7 @@ prose_values <- tribble(
 # Simulation design parameters the grid can answer ----
 # Section 3 and Appendix Section 1 state the parameters of the simulation. The grid records
 # most of them, so they are read back rather than asserted. The outcome means and variances
-# are arguments to attrition:::ds_manski_cis_2s() that no output file carries; they are
+# are inputs to attrition:::ds_manski_cis_2s() that no output file carries; they are
 # verified at the point of use in figure_1_simulation.R and carry no row here.
 
 panel_sizes <- sort(unique(figure_1$n1))
@@ -184,7 +184,7 @@ design_values <- tribble(
   "sim_n_followup", unique(main_panel$n2),
   "sim_p2_min", min(figure_1$p2),
   "sim_p2_max", max(figure_1$p2),
-  "sim_true_ate", unique(c(point_identified$low_est, point_identified$upp_est)),
+  "sim_true_ate", unique(c(point_identified$estimate_lower, point_identified$estimate_upper)),
   "sim_n_scenarios", length(scenarios),
   "sim_p1_scenario_low", scenarios[1],
   "sim_p1_scenario_mid", scenarios[2],

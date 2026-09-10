@@ -32,8 +32,7 @@ mturk <- read_csv(here::here("original", "levendusky_mturk_clean.csv"),
                   show_col_types = FALSE)
 
 # Row labels shared by Table 3 and Appendix Table 2 ----
-# estimator_ev() and estimator_ds() both return these six quantities in this order, and
-# both published tables print them under these names.
+# Both published tables print these six quantities under these names, in this order.
 bound_labels <- c(
   "95% CI Lower Bound",
   "95% CI Upper Bound",
@@ -42,6 +41,22 @@ bound_labels <- c(
   "Variance of Low Estimate",
   "Variance of High Estimate"
 )
+
+# One published table column, from one estimator result ----
+# The estimators return the same six quantities under broom's names, in a different
+# order from the one the tables print, and report the uncertainty as a standard error
+# where the tables print a variance. Both are handled here: the rows are selected by
+# name rather than by position, and the last two are squared back to variances so the
+# cells mean what their labels say. Taking as.numeric() of the result would now fill
+# every row with the wrong quantity and print two standard errors under "Variance of".
+published_bound_column <- function(x) {
+  c(unname(x["conf.low"]),
+    unname(x["conf.high"]),
+    unname(x["estimate_lower"]),
+    unname(x["estimate_upper"]),
+    unname(x["std.error_lower"])^2,
+    unname(x["std.error_upper"])^2)
+}
 
 # Blank a figure PDF's embedded timestamps ----
 # R's pdf() device stamps /CreationDate and /ModDate with the wall clock, so an

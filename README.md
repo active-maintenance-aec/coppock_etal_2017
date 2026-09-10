@@ -176,12 +176,22 @@ Ten years on, the easy route is the broken one.
 ## The two packages
 
 `attrition` implements the paper’s method and is still on GitHub. The
-deposited version is 0.0.0.9000; the current one is 0.1.0. Both were
-installed and run against every quantity in this repository, and they
-agree to twelve significant figures. `install_attrition.R` installs the
-deposited tarball if `attrition` is absent, because the tarball’s
-checksum is pinned in `original_manifest.csv` and a GitHub repository’s
-contents are not.
+deposited version is 0.0.0.9000 and the current one is 1.0.0, and the
+two no longer agree everywhere. 1.0.0 fixed the Imbens-Manski critical
+value, which had been found by minimising an absolute value over a fixed
+interval that only covers alpha near 0.05, so the interval bounds move
+by about 2e-09 relative here and would move much more at another
+significance level. Every point estimate is unchanged. 1.0.0 also
+renamed the six quantities its estimators return, onto broom’s names,
+and reports the uncertainty as a standard error where 0.0.0.9000
+reported a variance. The maintained rewrite is written against the
+current package and `install_attrition.R` halts if an older one is
+installed, since the old names would otherwise fill these tables with
+`NA` rather than fail. The deposited tarball is still what the scripts
+in `original/` are written against, and it still runs them;
+`install_attrition.R` installs it when `attrition` is absent, because
+the tarball’s checksum is pinned in `original_manifest.csv` and a GitHub
+repository’s contents are not.
 
 `commarobust` is a different case. It was the author’s prototype for
 robust standard errors around `lm()`, and it was superseded by
@@ -277,7 +287,7 @@ the treatment articles themselves, which are quoted from the source
 study. They are verified against the article’s own methods section and
 at the point of use in the scripts, and they are named here so that a
 reader can see the boundary rather than infer it. The simulation’s
-outcome means and variances are in the same class: they are arguments to
+outcome means and variances are in the same class: they are inputs to
 `attrition:::ds_manski_cis_2s()` that no output file carries, and they
 sit beside the call in `figure_1_simulation.R`.
 
@@ -574,8 +584,9 @@ objects named `c1a_t`, `c1r_t`, `c2a_t` and `c2r_t` into
 `ds_manski_cis_2s()` without ever defining them. This does not error,
 because they map onto formal arguments the function body never touches
 and R does not evaluate an argument it does not use. They are vestigial
-cost parameters from an earlier version of the function. The rewrite
-omits them.
+cost parameters from an earlier version of the function. The current
+function takes the arm-level moments as one list and has no such
+arguments; the rewrite builds that list directly.
 
 # Figures
 
@@ -636,7 +647,7 @@ that figure diffable rather than merely inspectable.
 | section_4.1_p14 | app_n_responded | 1444 | 1444 | 1 |  |
 | section_4.1_p14 | app_n_subjects | 1980 | 1980 | 1 |  |
 | section_4.2_p14 | app_outcome_max | 6 | 6 | 1 |  |
-| section_4.2_p14 | app_outcome_min | 0 | -8.04095352393955e-16 | 1 |  |
+| section_4.2_p14 | app_outcome_min | 0 | -1.55889440680195e-15 | 1 |  |
 | section_4.2_p14 | txt_ci_width_ds_ps | 1.23 | 1.22561085834396 | 1 |  |
 | section_4.2_p14 | txt_ci_width_no_ds | 3.50 | 3.50496018440374 | 1 |  |
 | section_4.2_p14 | txt_ds_ps_ci_lower | -0.53 | -0.529010551320638 | 1 |  |
@@ -739,9 +750,9 @@ that figure diffable rather than merely inspectable.
 | table_a2 | ta2_mod_vs_placebo_ex_ci_lower | -0.4778 | -0.477842687179526 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_ci_upper | 0.5769 | 0.57692983337372 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_var_high | 0.0067 | 0.00666486134438053 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_var_low | 0.0083 | 0.00825624817098751 | 1 |  |
+| table_a2 | ta2_mod_vs_placebo_ex_var_low | 0.0083 | 0.0082562481709875 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_wcb_high | 0.4426 | 0.442646282695529 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_wcb_low | -0.3284 | -0.328384873083366 | 1 |  |
+| table_a2 | ta2_mod_vs_placebo_ex_wcb_low | -0.3284 | -0.328384873083365 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_pp_ci_lower | -0.6119 | -0.611862038531696 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_pp_ci_upper | 0.5044 | 0.504351636768822 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_pp_var_high | 0.0114 | 0.0114143454384199 | 1 |  |
@@ -753,7 +764,7 @@ that figure diffable rather than merely inspectable.
 | table_a2 | ta2_pol_vs_mod_ex_var_high | 0.0095 | 0.00953316194586098 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_ex_var_low | 0.0070 | 0.00701487544541756 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_ex_wcb_high | 0.4426 | 0.442594036170701 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_wcb_low | -0.4710 | -0.470967068846772 | 1 |  |
+| table_a2 | ta2_pol_vs_mod_ex_wcb_low | -0.4710 | -0.470967068846773 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_pp_ci_lower | -0.5283 | -0.52830967410789 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_pp_ci_upper | 0.7452 | 0.745174826433894 | 1 |  |
 | table_a2 | ta2_pol_vs_mod_pp_var_high | 0.0111 | 0.0111080739914738 | 1 |  |
@@ -765,7 +776,7 @@ that figure diffable rather than merely inspectable.
 | table_a2 | ta2_pol_vs_placebo_ex_var_high | 0.0094 | 0.00938841779116446 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_ex_var_low | 0.0085 | 0.00846151811732802 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_ex_wcb_high | 0.5350 | 0.535009163087335 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_wcb_low | -0.4491 | -0.449120786151243 | 1 |  |
+| table_a2 | ta2_pol_vs_placebo_ex_wcb_low | -0.4491 | -0.449120786151244 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_pp_ci_lower | -0.6171 | -0.617118472710443 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_pp_ci_upper | 0.7262 | 0.726201234202598 | 1 |  |
 | table_a2 | ta2_pol_vs_placebo_pp_var_high | 0.0114 | 0.0114487996375541 | 1 |  |
@@ -791,12 +802,12 @@ not of the transcription.
 |:----------|:-----------------------|
 | R version | 4.6.0                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-08-10             |
+| Date run  | 2026-09-10             |
 
 | Package      | Version |
 |:-------------|:--------|
 | attrition    | 1.0.0   |
-| estimatr     | 1.0.6   |
+| estimatr     | 2.0.0   |
 | modelsummary | 2.6.0   |
 | dplyr        | 1.2.1   |
 | ggplot2      | 4.0.3   |

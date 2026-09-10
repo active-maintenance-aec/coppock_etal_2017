@@ -22,16 +22,18 @@ sim_grid <- expand_grid(
 )
 
 # ds_manski_cis_2s() is internal to attrition and is the function the paper's own
-# simulation script calls. Its c1a_t, c1r_t, c2a_t and c2r_t arguments are unused cost
-# parameters; the archive passes four undefined objects into them, which survives only
-# because R never evaluates an argument the body does not touch. They are omitted here.
+# simulation script calls. As of attrition 7576398 it takes the arm-level moments as one
+# list, the shape ds_moments() builds from data, and delta, the share of follow-up
+# nonrespondents given worst-case treatment, which is 1 here as in the paper. The
+# archive's version took the same moments as sixteen scalars, along with c1a_t, c1r_t,
+# c2a_t and c2r_t, unused cost parameters it passed four undefined objects into; that
+# survived only because R never evaluates an argument the body does not touch.
 simulate_cis <- function(n1, n2, p1, p2) {
+  arm <- list(n1 = n1, p1 = p1, y1m = 0.5, s1 = 0.5,
+              n2 = n2, p2 = p2, y2m = 0.5, s2 = 0.5)
   out <- attrition:::ds_manski_cis_2s(
-    n1_t = n1, n2_t = n2, n1_c = n1, n2_c = n2,
-    p1_t = p1, p2_t = p2, p1_c = p1, p2_c = p2,
-    s1_t = 0.5, s1_c = 0.5, s2_nm_t = 0.5, s2_nm_c = 0.5,
-    y1m_t = 0.5, y1m_c = 0.5, y2m_nm_t = 0.5, y2m_nm_c = 0.5,
-    minY = 0, maxY = 1, alpha = 0.05
+    list(t = arm, c = arm),
+    minY = 0, maxY = 1, alpha = 0.05, delta = 1
   )
   as_tibble_row(out)
 }
@@ -39,8 +41,8 @@ simulate_cis <- function(n1, n2, p1, p2) {
 sim_results <- sim_grid |>
   mutate(pmap(list(n1, n2, p1, p2), simulate_cis) |> list_rbind()) |>
   mutate(
-    ci_width = ci_upper - ci_lower,
-    bound_width = upp_est - low_est,
+    ci_width = conf.high - conf.low,
+    bound_width = estimate_upper - estimate_lower,
     n_label = paste0("N[1] == ", 2 * n1)
   )
 
@@ -48,9 +50,9 @@ write_csv(sim_results, here::here("maintained", "output", "figure_1_simulation.c
 
 # Left panel: the intervals themselves ----
 intervals <- sim_results |>
-  pivot_longer(c(ci_lower, ci_upper, low_est, upp_est),
+  pivot_longer(c(conf.low, conf.high, estimate_lower, estimate_upper),
                names_to = "series", values_to = "value") |>
-  mutate(type = if_else(series %in% c("ci_lower", "ci_upper"),
+  mutate(type = if_else(series %in% c("conf.low", "conf.high"),
                         "95% Confidence Interval", "Identification Region"))
 
 interval_labels <- tibble(

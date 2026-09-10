@@ -32,9 +32,9 @@ ds_ps <- estimator_ds(
 
 table_3 <- tibble(
   quantity = bound_labels,
-  no_ds = as.numeric(no_ds),
-  ds = as.numeric(ds),
-  ds_ps = as.numeric(ds_ps)
+  no_ds = published_bound_column(no_ds),
+  ds = published_bound_column(ds),
+  ds_ps = published_bound_column(ds_ps)
 )
 
 print(table_3)

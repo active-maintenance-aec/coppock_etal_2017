@@ -27,12 +27,12 @@ mod_placebo_ex <- estimator_ds(Y = L_ex_w2, Z = Z3, R1 = R1, Attempt = Attempt, 
 
 table_a2 <- tibble(
   quantity = bound_labels,
-  pol_mod_pp = as.numeric(pol_mod_pp),
-  pol_mod_ex = as.numeric(pol_mod_ex),
-  pol_placebo_pp = as.numeric(pol_placebo_pp),
-  pol_placebo_ex = as.numeric(pol_placebo_ex),
-  mod_placebo_pp = as.numeric(mod_placebo_pp),
-  mod_placebo_ex = as.numeric(mod_placebo_ex)
+  pol_mod_pp = published_bound_column(pol_mod_pp),
+  pol_mod_ex = published_bound_column(pol_mod_ex),
+  pol_placebo_pp = published_bound_column(pol_placebo_pp),
+  pol_placebo_ex = published_bound_column(pol_placebo_ex),
+  mod_placebo_pp = published_bound_column(mod_placebo_pp),
+  mod_placebo_ex = published_bound_column(mod_placebo_ex)
 )
 
 print(table_a2)
