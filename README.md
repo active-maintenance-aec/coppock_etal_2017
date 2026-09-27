@@ -620,9 +620,9 @@ that figure diffable rather than merely inspectable.
 | appendix_section_1_p2 | appx_two_scenarios | 2 | 2 | 1 |  |
 | appendix_section_2_p3 | appx_effect_diminished |  |  |  | 1 |
 | appendix_section_2_p3 | appx_extremity_negligible |  |  |  | 1 |
-| appendix_section_2_p3 | appx_wave1_effect | 0.468 | 0.468375086098891 | 1 |  |
+| appendix_section_2_p3 | appx_wave1_effect | 0.468 | 0.468375086098889 | 1 |  |
 | appendix_section_2_p3 | appx_wave1_effect_strong |  |  |  | 1 |
-| appendix_section_2_p3 | appx_wave2_effect | 0.126 | 0.125886650690805 | 1 |  |
+| appendix_section_2_p3 | appx_wave2_effect | 0.126 | 0.125886650690804 | 1 |  |
 | appendix_section_3_p4 | appx_pairwise_columns | 6 | 6 | 1 |  |
 | figure_1 | sim_p2_zero_is_wcb |  |  |  | 1 |
 | figure_1 | sim_point_identified |  |  |  | 1 |
@@ -656,8 +656,8 @@ that figure diffable rather than merely inspectable.
 | section_4.2_p14 | txt_ds_ps_wcb_low | -0.34 | -0.344389910863888 | 1 |  |
 | section_4.2_p14 | txt_ds_wcb_high | 0.57 | 0.571815728388134 | 1 |  |
 | section_4.2_p14 | txt_ds_wcb_low | -0.34 | -0.34174537662934 | 1 |  |
-| section_4.2_p14 | txt_naive_ate_coef | 0.126 | 0.125886650690805 | 1 |  |
-| section_4.2_p14 | txt_naive_ate_pval | 0.057 | 0.0571779950234009 | 1 |  |
+| section_4.2_p14 | txt_naive_ate_coef | 0.126 | 0.125886650690804 | 1 |  |
+| section_4.2_p14 | txt_naive_ate_pval | 0.057 | 0.0571779950234041 | 1 |  |
 | section_4.2_p14 | txt_naive_ate_se | 0.066 | 0.0661527954807814 | 1 |  |
 | section_4.2_p14 | txt_no_ds_ci_lower | -1.67 | -1.66907903885775 | 1 |  |
 | section_4.2_p14 | txt_no_ds_ci_upper | 1.84 | 1.83588114554598 | 1 |  |
@@ -716,36 +716,36 @@ that figure diffable rather than merely inspectable.
 | table_3 | t3_no_ds_wcb_high | 1.7097 | 1.70966762747749 | 1 |  |
 | table_3 | t3_no_ds_wcb_low | -1.5391 | -1.53914496339566 | 1 |  |
 | table_a1 | ta1_all_ex_wave1_n | 2156 | 2156 | 1 |  |
-| table_a1 | ta1_all_ex_wave1_r2 | 0.001 | 0.000969193379921962 | 1 |  |
+| table_a1 | ta1_all_ex_wave1_r2 | 0.001 | 0.000969193379921518 | 1 |  |
 | table_a1 | ta1_all_ex_wave2_n | 2156 | 2156 | 1 |  |
-| table_a1 | ta1_all_ex_wave2_r2 | 0.0004 | 0.000359806687155073 | 1 |  |
+| table_a1 | ta1_all_ex_wave2_r2 | 0.0004 | 0.000359806687159292 | 1 |  |
 | table_a1 | ta1_all_pp_wave1_n | 2156 | 2156 | 1 |  |
-| table_a1 | ta1_all_pp_wave1_r2 | 0.024 | 0.0239507001082496 | 1 |  |
+| table_a1 | ta1_all_pp_wave1_r2 | 0.024 | 0.0239507001082565 | 1 |  |
 | table_a1 | ta1_all_pp_wave2_n | 2156 | 2156 | 1 |  |
-| table_a1 | ta1_all_pp_wave2_r2 | 0.002 | 0.00174424183477073 | 1 |  |
-| table_a1 | ta1_constant_ex_wave1_coef | 1.531 | 1.53146374829001 | 1 |  |
-| table_a1 | ta1_constant_ex_wave1_se | 0.024 | 0.0243596218569334 | 1 |  |
-| table_a1 | ta1_constant_ex_wave2_coef | 1.617 | 1.61662106703146 | 1 |  |
-| table_a1 | ta1_constant_ex_wave2_se | 0.024 | 0.0241507965686312 | 1 |  |
-| table_a1 | ta1_constant_pp_wave1_coef | 3.108 | 3.10841313269493 | 1 |  |
-| table_a1 | ta1_constant_pp_wave1_se | 0.046 | 0.0464622897843693 | 1 |  |
-| table_a1 | ta1_constant_pp_wave2_coef | 3.542 | 3.54206566347469 | 1 |  |
-| table_a1 | ta1_constant_pp_wave2_se | 0.046 | 0.0459614434759561 | 1 |  |
-| table_a1 | ta1_placebo_ex_wave1_coef | 0.019 | 0.0190980494627956 | 1 |  |
-| table_a1 | ta1_placebo_ex_wave1_se | 0.035 | 0.0352828650176962 | 1 |  |
-| table_a1 | ta1_placebo_ex_wave2_coef | -0.011 | -0.0105817411887674 | 1 |  |
-| table_a1 | ta1_placebo_ex_wave2_se | 0.034 | 0.0343376300527566 | 1 |  |
-| table_a1 | ta1_placebo_pp_wave1_coef | 0.352 | 0.352378065806937 | 1 |  |
-| table_a1 | ta1_placebo_pp_wave1_se | 0.067 | 0.0674342678150233 | 1 |  |
-| table_a1 | ta1_placebo_pp_wave2_coef | 0.042 | 0.0415017522556453 | 1 |  |
-| table_a1 | ta1_placebo_pp_wave2_se | 0.066 | 0.0656684123731188 | 1 |  |
-| table_a1 | ta1_polarized_ex_wave1_coef | -0.031 | -0.0311131171539686 | 1 |  |
+| table_a1 | ta1_all_pp_wave2_r2 | 0.002 | 0.00174424183477495 | 1 |  |
+| table_a1 | ta1_constant_ex_wave1_coef | 1.531 | 1.53146374829 | 1 |  |
+| table_a1 | ta1_constant_ex_wave1_se | 0.024 | 0.0243596218569332 | 1 |  |
+| table_a1 | ta1_constant_ex_wave2_coef | 1.617 | 1.61662106703145 | 1 |  |
+| table_a1 | ta1_constant_ex_wave2_se | 0.024 | 0.024150796568631 | 1 |  |
+| table_a1 | ta1_constant_pp_wave1_coef | 3.108 | 3.10841313269491 | 1 |  |
+| table_a1 | ta1_constant_pp_wave1_se | 0.046 | 0.046462289784369 | 1 |  |
+| table_a1 | ta1_constant_pp_wave2_coef | 3.542 | 3.54206566347466 | 1 |  |
+| table_a1 | ta1_constant_pp_wave2_se | 0.046 | 0.0459614434759558 | 1 |  |
+| table_a1 | ta1_placebo_ex_wave1_coef | 0.019 | 0.0190980494627954 | 1 |  |
+| table_a1 | ta1_placebo_ex_wave1_se | 0.035 | 0.035282865017696 | 1 |  |
+| table_a1 | ta1_placebo_ex_wave2_coef | -0.011 | -0.010581741188767 | 1 |  |
+| table_a1 | ta1_placebo_ex_wave2_se | 0.034 | 0.0343376300527564 | 1 |  |
+| table_a1 | ta1_placebo_pp_wave1_coef | 0.352 | 0.352378065806935 | 1 |  |
+| table_a1 | ta1_placebo_pp_wave1_se | 0.067 | 0.067434267815023 | 1 |  |
+| table_a1 | ta1_placebo_pp_wave2_coef | 0.042 | 0.041501752255645 | 1 |  |
+| table_a1 | ta1_placebo_pp_wave2_se | 0.066 | 0.0656684123731185 | 1 |  |
+| table_a1 | ta1_polarized_ex_wave1_coef | -0.031 | -0.0311131171539694 | 1 |  |
 | table_a1 | ta1_polarized_ex_wave1_se | 0.034 | 0.034340859741032 | 1 |  |
-| table_a1 | ta1_polarized_ex_wave2_coef | -0.030 | -0.0296645452923334 | 1 |  |
+| table_a1 | ta1_polarized_ex_wave2_coef | -0.030 | -0.0296645452923338 | 1 |  |
 | table_a1 | ta1_polarized_ex_wave2_se | 0.034 | 0.03402111975226 | 1 |  |
-| table_a1 | ta1_polarized_pp_wave1_coef | 0.468 | 0.468375086098891 | 1 |  |
+| table_a1 | ta1_polarized_pp_wave1_coef | 0.468 | 0.468375086098889 | 1 |  |
 | table_a1 | ta1_polarized_pp_wave1_se | 0.067 | 0.0665244501080027 | 1 |  |
-| table_a1 | ta1_polarized_pp_wave2_coef | 0.126 | 0.125886650690805 | 1 |  |
+| table_a1 | ta1_polarized_pp_wave2_coef | 0.126 | 0.125886650690804 | 1 |  |
 | table_a1 | ta1_polarized_pp_wave2_se | 0.066 | 0.0661527954807814 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_ci_lower | -0.4778 | -0.477842687179526 | 1 |  |
 | table_a2 | ta2_mod_vs_placebo_ex_ci_upper | 0.5769 | 0.57692983337372 | 1 |  |
@@ -802,12 +802,12 @@ not of the transcription.
 |:----------|:-----------------------|
 | R version | 4.6.0                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-09-10             |
+| Date run  | 2026-09-27             |
 
 | Package      | Version |
 |:-------------|:--------|
 | attrition    | 1.0.0   |
-| estimatr     | 2.0.0   |
+| estimatr     | 2.0.1   |
 | modelsummary | 2.6.0   |
 | dplyr        | 1.2.1   |
 | ggplot2      | 4.0.3   |

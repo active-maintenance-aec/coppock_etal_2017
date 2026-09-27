@@ -1,7 +1,7 @@
 claim,value
-"Naive ATE on Perceived Polarization, Wave 2",0.12588665069080543
-Naive ATE standard error,0.0661527954807814
-Naive ATE two-sided p-value,0.05717799502340086
+"Naive ATE on Perceived Polarization, Wave 2",0.12588665069080376
+Naive ATE standard error,0.06615279548078137
+Naive ATE two-sided p-value,0.05717799502340406
 "Worst-case bound without double sampling, low",-1.539144963395659
 "Worst-case bound without double sampling, high",1.7096676274774896
 "95% CI without double sampling, lower",-1.6690790388577523
