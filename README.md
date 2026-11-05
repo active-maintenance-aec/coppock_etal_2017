@@ -51,8 +51,10 @@ code that produces it: `published_claims.csv` is the hand extraction of
 the article, `build_ground_truth.R` generates the comparison and runs
 the coverage gate, and `coppock_etal_2017_ground_truth.csv` is what it
 writes. `original/` is created by the download script and is
-deliberately absent from the repository. This file is the
-reproducibility report, also available as a PDF in `report/`.
+deliberately absent from the repository. `errata.qmd` corrects the
+published article, rendering to `coppock_etal_2017_errata.pdf` at the
+root. This file is the reproducibility report, also available as a PDF
+in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this
 repository maintains. See `LICENSE`.
@@ -120,8 +122,11 @@ confidence interval width where the paper says 65 percent, and the
 sensitivity analysis gives a $\delta^*$ of 0.0707 where the paper and
 Figure 2 both say 0.07.
 
-No sentence in the article is contradicted by the data behind it, so
-this repository carries no errata document.
+No number in the article is contradicted by the data behind it. A
+word-by-word reading of the article and its appendix did find errors of
+another kind, in the prose, the citations, and one table’s headings;
+none changes an estimate or a conclusion, and they are set out in
+`coppock_etal_2017_errata.pdf` (see Errata).
 
 # Paper overview
 
@@ -247,9 +252,22 @@ rewrite produces.
 No published value changes. The correction recovers numbers the archive
 was unable to produce; all of them agree with the article. That is a
 correction to the deposited code, which is what this section is for. It
-is not an erratum in the article, and there are none: every number the
-article prints is reproduced here, and every claim it makes about shape
-holds.
+is not an erratum in the article: every number the article prints is
+reproduced here, and every claim it makes about shape holds.
+
+The article’s own errata are set out in `coppock_etal_2017_errata.pdf`
+at the root of this repository: 10 corrections and 1 item that flags a
+probable error without correcting it. They come from reading the article
+and its appendix word by word, and none touches a printed number.
+Section 4.1 gives the size of the Moderate and Polarized arms (1,980) as
+the size of the experiment, which randomized 2,955 subjects to three
+arms, and Table 1’s headings place Responded and Did Not Respond under
+the follow-up sample. Four citations are wrong: An et al. (2009) is
+cited by its authors’ given names, and Lee, Zhang and Rubin, and Si,
+Reiter, and Hillygus carry the wrong year. The rest are misspellings and
+dropped or run-together words, and the item left uncorrected is a
+probable stray word in a treatment stimulus whose fielded text we could
+not check.
 
 # The extraction and the two instruments
 
@@ -800,24 +818,24 @@ not of the transcription.
 
 | Item      | Value                  |
 |:----------|:-----------------------|
-| R version | 4.6.0                  |
+| R version | 4.6.1                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-09-27             |
+| Date run  | 2026-11-05             |
 
-| Package      | Version |
-|:-------------|:--------|
-| attrition    | 1.0.0   |
-| estimatr     | 2.0.1   |
-| modelsummary | 2.6.0   |
-| dplyr        | 1.2.1   |
-| ggplot2      | 4.0.3   |
-| tidyr        | 1.3.2   |
-| purrr        | 1.2.2   |
-| readr        | 2.2.0   |
-| here         | 1.0.2   |
-| gridExtra    | 2.3     |
-| knitr        | 1.51    |
-| kableExtra   | 1.4.0   |
+| Package      | Version    |
+|:-------------|:-----------|
+| attrition    | 1.0.0      |
+| estimatr     | 2.0.1.9000 |
+| modelsummary | 2.6.0      |
+| dplyr        | 1.2.1      |
+| ggplot2      | 4.0.3      |
+| tidyr        | 1.3.2      |
+| purrr        | 1.2.2      |
+| readr        | 2.2.0      |
+| here         | 1.0.2      |
+| gridExtra    | 2.3        |
+| knitr        | 1.51       |
+| kableExtra   | 1.4.0      |
 
 Package versions used for the run behind this report.
 

@@ -55,7 +55,7 @@ This repository holds the actively maintained replication code for Coppock, Gerb
 
 **The data are not redistributed here.** The deposit is 231 KB across seven files and lives at Harvard Dataverse, which is the only copy this repository points at. `download_original.R` fetches it and verifies every file; `original_manifest.csv` pins the file identifiers, sizes and checksums, so the exact bytes this code was written against are recorded in version control even though the bytes themselves are not.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the hand extraction of the article, `build_ground_truth.R` generates the comparison and runs the coverage gate, and `coppock_etal_2017_ground_truth.csv` is what it writes. `original/` is created by the download script and is deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the hand extraction of the article, `build_ground_truth.R` generates the comparison and runs the coverage gate, and `coppock_etal_2017_ground_truth.csv` is what it writes. `original/` is created by the download script and is deliberately absent from the repository. `errata.qmd` corrects the published article, rendering to `coppock_etal_2017_errata.pdf` at the root. This file is the reproducibility report, also available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains. See `LICENSE`.
 
@@ -97,7 +97,7 @@ The remaining `r n_archive_match` claims the archive can be compared on all repr
 
 Yes, without exception. Of the `r n_claims` recorded claims, `r n_rewrite_comparable` carry a published number and all `r n_rewrite_match` match it to the precision the page prints; `r n_rewrite_fail` differ. The remaining `r n_descriptive` are claims about shape rather than value, and all `r n_descriptive_hold` hold. The three the archive cannot reach are among the matches: replacing the stale object name gives a 65.0 percent reduction in confidence interval width where the paper says 65 percent, and the sensitivity analysis gives a $\delta^*$ of 0.0707 where the paper and Figure 2 both say 0.07.
 
-No sentence in the article is contradicted by the data behind it, so this repository carries no errata document.
+No number in the article is contradicted by the data behind it. A word-by-word reading of the article and its appendix did find errors of another kind, in the prose, the citations, and one table's headings; none changes an estimate or a conclusion, and they are set out in `coppock_etal_2017_errata.pdf` (see Errata).
 
 # Paper overview
 
@@ -180,7 +180,17 @@ tibble(
   latex_only(\(k) k |> kable_styling(latex_options = "hold_position", font_size = 9))
 ```
 
-No published value changes. The correction recovers numbers the archive was unable to produce; all of them agree with the article. That is a correction to the deposited code, which is what this section is for. It is not an erratum in the article, and there are none: every number the article prints is reproduced here, and every claim it makes about shape holds.
+No published value changes. The correction recovers numbers the archive was unable to produce; all of them agree with the article. That is a correction to the deposited code, which is what this section is for. It is not an erratum in the article: every number the article prints is reproduced here, and every claim it makes about shape holds.
+
+```{r errata_spine, include=FALSE}
+# The errata are defined once, in errata.qmd, which writes errata_entries.csv when it
+# renders. This section counts from that file rather than restating the entries.
+spine <- readr::read_csv(here::here("errata_entries.csv"), show_col_types = FALSE)
+n_corrections <- sum(spine$form != "note")
+n_notes <- sum(spine$form == "note")
+```
+
+The article's own errata are set out in `coppock_etal_2017_errata.pdf` at the root of this repository: `r n_corrections` corrections and `r n_notes` item that flags a probable error without correcting it. They come from reading the article and its appendix word by word, and none touches a printed number. Section 4.1 gives the size of the Moderate and Polarized arms (1,980) as the size of the experiment, which randomized 2,955 subjects to three arms, and Table 1's headings place Responded and Did Not Respond under the follow-up sample. Four citations are wrong: An et al. (2009) is cited by its authors' given names, and Lee, Zhang and Rubin, and Si, Reiter, and Hillygus carry the wrong year. The rest are misspellings and dropped or run-together words, and the item left uncorrected is a probable stray word in a treatment stimulus whose fielded text we could not check.
 
 # The extraction and the two instruments
 
