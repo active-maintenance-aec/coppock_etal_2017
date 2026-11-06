@@ -256,7 +256,7 @@ is not an erratum in the article: every number the article prints is
 reproduced here, and every claim it makes about shape holds.
 
 The article’s own errata are set out in `coppock_etal_2017_errata.pdf`
-at the root of this repository: 10 corrections and 1 item that flags a
+at the root of this repository: 11 corrections and 2 item that flags a
 probable error without correcting it. They come from reading the article
 and its appendix word by word, and none touches a printed number.
 Section 4.1 gives the size of the Moderate and Polarized arms (1,980) as
@@ -820,7 +820,7 @@ not of the transcription.
 |:----------|:-----------------------|
 | R version | 4.6.1                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-11-05             |
+| Date run  | 2026-11-06             |
 
 | Package      | Version    |
 |:-------------|:-----------|

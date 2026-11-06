@@ -150,6 +150,15 @@ entries <- tribble(
   "ignorable conditional on observables [[(Little]] and Rubin 2002, ch. 15).",
   "",
   "",
+  NA_character_,
+
+  13, "description", "reading", "note",
+  "The appendix's title page names an author the article does not",
+  "published appendix, title page",
+  "Peter M. Aronow, Alexander Coppock, Alan S. Gerber, Donald P. Green, and Holger L. Kern",
+  NA_character_,
+  "The title page, dated March 14, 2016, lists five authors. The article's byline lists four and thanks Peter Aronow for his contributions to previous versions of the paper in the authors' note on p. 188. Aronow left the paper, and the appendix's title page was not updated.",
+  "",
   NA_character_
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids, corrected_values),
