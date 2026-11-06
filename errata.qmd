@@ -33,8 +33,15 @@ here::i_am("errata.qmd")
 #
 # Every quotation was checked against an image of the published page on 2026-11-05. The
 # years in entries 4, 5, and 7 come from Crossref, read the same day.
+#
+# corrected_values runs parallel to claim_ids, one value per id in the same order, carrying
+# the corrected quantity as a number rather than as a sentence. The sentence already holds
+# it, but only inside prose a reader has to parse. Each value comes from the same expression
+# that glues the sentence, so the two cannot be written apart, and the gate below re-checks
+# that each one is still inside the span it belongs to. An entry of a class that changes no
+# quantity carries NA, and so does a note-form entry, which corrects nothing.
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
   3, "bibliographic", "reading", "brief",
   "The An et al. citation names the authors by their given names",
@@ -43,6 +50,7 @@ entries <- tribble(
   "See [[An, Frangakis, Musick, and Yiannoutsos]] (2009); ... (see also [[An, Frangakis, Musick, and Yiannoutsos]] 2009,",
   "The reference list on p. 204 gives the authors correctly: An, Ming-Wen, Constantine E. Frangakis, Beverly S. Musick, and Constantin T. Yiannoutsos. The two citations print the first author's surname followed by the other three authors' given names.",
   "",
+  NA_character_,
 
   4, "bibliographic", "reading", "brief",
   "The Lee reference and its citations give the year as 2010",
@@ -51,6 +59,7 @@ entries <- tribble(
   "Lee, David S. [[2009]]. Training, wages, and sample selection: Estimating sharp bounds on treatment effects. Review of Economic Studies 76(3):1071–1102. ... (Imai 2008; Mcconnell, Stuart, and Devaney 2008; Lee [[2009]]). ... and Lee ([[2009]]). ... and Lee ([[2009]]) ... Imbens and Manski (2004) and Lee ([[2009]])",
   "Crossref, doi 10.1111/j.1467-937x.2009.00536.x, gives volume 76, issue 3, pages 1071 to 1102, issued July 2009. The printed volume and pages are those of the 2009 issue. The p. 188 citation's \"Mcconnell\" is corrected in entry 6, and the p. 195 citation of Zhang and Rubin in entry 5.",
   "",
+  NA_character_,
 
   5, "bibliographic", "reading", "brief",
   "The Zhang and Rubin reference and its citation give the year as 2004",
@@ -59,6 +68,7 @@ entries <- tribble(
   "Zhang, Junni L., and Donald B. Rubin. [[2003]]. Estimation of causal effects via principal stratification when some outcomes are truncated by 'death'. Journal of Educational and Behavioral Statistics 28(4):353–368. ... See Manski (1990, 1995, 2007), Zhang and Rubin ([[2003]]), and Lee (2010)",
   "Crossref, doi 10.3102/10769986028004353, gives volume 28, issue 4, pages 353 to 368, issued December 2003. The p. 195 sentence also cites Lee, corrected in entry 4.",
   "",
+  NA_character_,
 
   6, "spelling", "reading", "brief",
   "\"Mcconnell\" for \"McConnell\"",
@@ -67,6 +77,7 @@ entries <- tribble(
   "(Imai 2008; [[McConnell]], Stuart, and Devaney 2008; Lee 2010).",
   "The reference list on p. 205 spells the name correctly. The year of the Lee citation is corrected in entry 4.",
   "",
+  NA_character_,
 
   8, "spelling", "reading", "brief",
   "\"assuption\" for \"assumption\"",
@@ -75,6 +86,7 @@ entries <- tribble(
   "In this section we present analyses under an [[assumption]] that missingness is independent of potential outcomes",
   "",
   "",
+  NA_character_,
 
   9, "wording", "reading", "brief",
   "A dropped article in appendix Section 2",
@@ -83,6 +95,7 @@ entries <- tribble(
   "We observe [[a]] strong average effect of the Polarized treatment on Perceived Polarization in Wave 1 (0.468 points).",
   "",
   "",
+  NA_character_,
 
   10, "wording", "reading", "brief",
   "Four pairs of words run together in the Placebo stimulus",
@@ -91,6 +104,7 @@ entries <- tribble(
   "bring in something [[fresh and]] the new format really has done that. ... and wanting to show what they can [[do because]] they have the chance to do what it is that they do. ... in many different [[packages whether]] it be color, creed, size, [[anything because]] you get to see these people",
   "Each pair most likely lost a punctuation mark between its two words when the appendix was typeset. The source text is not in the replication archive, so the correction supplies only the space and restores no punctuation.",
   "",
+  NA_character_,
 
   1, "description", "reading", "brief",
   "Section 4.1 gives the size of two arms as the size of the experiment",
@@ -99,6 +113,7 @@ entries <- tribble(
   "[[The Moderate and Polarized arms of our experiment comprise]] 1,980 subjects, of which 1,444 had nonmissing responses in the initial sample.",
   "The experiment randomized 2,955 subjects to three arms: 995 Moderate, 985 Polarized, and 975 Placebo, counted from the deposited data. Section 4 (p. 200) sets the Placebo arm aside, and Table 1 counts the other two, which is where 1,980 comes from. The appendix analyzes the Placebo arm as well.",
   "",
+  NA_character_,
 
   2, "label", "reading", "brief",
   "Table 1's column headings place two initial-sample columns under the follow-up sample",
@@ -107,6 +122,7 @@ entries <- tribble(
   "Initial Sample: N, [[Responded, Did Not Respond]]. Follow-up Sample: Invited, Responded to Invitation.",
   "Section 4.1 (p. 201) says the 1,444 subjects counted under Responded \"had nonmissing responses in the initial sample\", and Responded plus Did Not Respond sums to N in every row. Only the headings move; no cell changes.",
   "",
+  NA_character_,
 
   7, "bibliographic", "reading", "brief",
   "The Si, Reiter, and Hillygus reference and its citation give the year as 2014",
@@ -115,6 +131,7 @@ entries <- tribble(
   "Si, Yajuan, Jerome P. Reiter, and D. Sunshine Hillygus. [[2015]]. Semi-parametric selection models for potentially non-ignorable attrition in panel studies with refreshment samples. Political Analysis 23(1):92–112. ... Si, Reiter, and Hillygus [[2015]]),",
   "Crossref, doi 10.1093/pan/mpu009, gives volume 23, issue 1, pages 92 to 112, issued 2015. The printed volume and pages are those of the 2015 issue.",
   "",
+  NA_character_,
 
   11, "wording", "reading", "note",
   "A probable stray word in the Moderate stimulus",
@@ -122,13 +139,57 @@ entries <- tribble(
   "While he supports gay marriage, he did not push to change federal [[on]] policy on this issue, knowing that it might upset some voters.",
   NA,
   "The sentence reads as \"to change federal policy on this issue\" with a stray \"on\". The appendix reproduces the stimulus that subjects read, and we have not been able to check the fielded instrument, so we do not correct it: if the slip was in the text subjects saw, the appendix reports it faithfully.",
-  ""
+  "",
+  NA_character_
 ) |>
-  mutate(across(c(title, published, corrected, note, claim_ids), as.character)) |>
+  mutate(across(c(title, published, corrected, note, claim_ids, corrected_values),
+                as.character)) |>
   arrange(entry)
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry),
           all(is.na(entries$corrected) == (entries$form == "note")))
+
+# Gate: corrected_values agrees with the sentence it was glued into ----
+# The column and the sentence are written from one expression, so they begin in agreement
+# and this gate exists for the edit that separates them: a value moved from one marked span
+# to another, a span reworded to carry a second number, a claim id appended without its
+# value. Each value has to be inside the span it belongs to, matched by position where the
+# counts line up, and inside SOME span where an entry marks a label as well as a number and
+# its spans outnumber its values.
+marked_spans <- function(x) str_match_all(x, "\\[\\[(.*?)\\]\\]")[[1]][, 2]
+
+quantified <- entries |>
+  filter(!is.na(corrected_values)) |>
+  mutate(ids = str_split(claim_ids, ";"), values = str_split(corrected_values, ";"),
+         spans = map(corrected, marked_spans))
+
+stopifnot(all(lengths(quantified$ids) == lengths(quantified$values)))
+
+value_placed <- pmap_lgl(quantified, function(...) {
+  e <- list(...)
+  if (length(e$values) == length(e$spans)) {
+    all(map2_lgl(e$values, e$spans, \(v, s) str_detect(s, fixed(v))))
+  } else {
+    all(map_lgl(e$values, \(v) any(map_lgl(e$spans, \(s) str_detect(s, fixed(v))))))
+  }
+})
+
+if (!all(value_placed)) {
+  print(quantified |> filter(!value_placed) |> select(entry, title, corrected_values, corrected))
+  stop("An entry's corrected_values are not in the spans of its corrected sentence.")
+}
+
+# An entry that changes a quantity has to say which one, and an entry that changes none may
+# not carry a value. The class is the declaration and this is where it binds. A note-form
+# entry corrects nothing, so it carries NA whatever its class. An empty claim_ids is stored
+# as "" and counts as missing here.
+has_ids <- !is.na(entries$claim_ids) & entries$claim_ids != ""
+needs_value <- entries$class == "quantity" & entries$form != "note" & has_ids
+stopifnot(
+  all(!is.na(entries$corrected_values[needs_value])),
+  all(is.na(entries$corrected_values[!needs_value])),
+  all(is.na(entries$corrected_values) | has_ids)
+)
 
 # The spine's markup, resolved for this document. Another renderer resolves it differently.
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
