@@ -31,7 +31,8 @@ here::i_am("errata.qmd")
 #
 # Entry 11 is a note (decision 15): it corrects nothing, so its corrected field is NA.
 #
-# Every quotation was checked against an image of the published page on 2026-11-05. The
+# Every quotation was checked against an image of the published page on 2026-11-05, and
+# entry 12's on 2026-11-06. The
 # years in entries 4, 5, and 7 come from Crossref, read the same day.
 #
 # corrected_values runs parallel to claim_ids, one value per id in the same order, carrying
@@ -140,6 +141,15 @@ entries <- tribble(
   NA,
   "The sentence reads as \"to change federal policy on this issue\" with a stray \"on\". The appendix reproduces the stimulus that subjects read, and we have not been able to check the fielded instrument, so we do not correct it: if the slip was in the text subjects saw, the appendix reports it faithfully.",
   "",
+  NA_character_,
+
+  12, "typographical", "reading", "brief",
+  "A stray space inside a citation",
+  "published p. 203, Section 5",
+  "ignorable conditional on observables [[( Little]] and Rubin 2002, ch. 15).",
+  "ignorable conditional on observables [[(Little]] and Rubin 2002, ch. 15).",
+  "",
+  "",
   NA_character_
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids, corrected_values),
@@ -226,6 +236,12 @@ walk(3:7, emit_entry)
 
 ```{r appendix-entries, results="asis"}
 walk(8:11, emit_entry)
+```
+
+# The article, continued
+
+```{r article-continued-entries, results="asis"}
+walk(12, emit_entry)
 ```
 
 ```{r emit-spine}
