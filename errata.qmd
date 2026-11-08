@@ -24,16 +24,19 @@ here::i_am("errata.qmd")
 # here, \was{} in an edition. Nothing else in a field is markup, so the same string can be
 # set by either.
 #
-# Numbering is APPEND-ONLY once this note is published: an entry can already have been
-# cited, so a later finding is added at the end and never interleaved.
+# Numbering follows PROCEDURES.md Stage 4b: entries are ordered by severity block (quantity;
+# description, interpretation, definition; label, float, cross_reference; wording, spelling,
+# typography; bibliographic), discovery order inside a block, and a finding that lands in an
+# earlier block renumbers the entries after it. Renumbered 2026-11-07; the old-to-new map is
+# in that day's commit message.
 #
 # claim_ids is empty throughout, since no entry corrects a printed number.
 #
-# Entry 11 is a note (decision 15): it corrects nothing, so its corrected field is NA.
+# Entry 8 is a note (decision 15): it corrects nothing, so its corrected field is NA.
 #
 # Every quotation was checked against an image of the published page on 2026-11-05, and
-# entry 12's on 2026-11-06. The
-# years in entries 4, 5, and 7 come from Crossref, read the same day.
+# entry 9's on 2026-11-06. The
+# years in entries 11, 12, and 13 come from Crossref, read the same day.
 #
 # corrected_values runs parallel to claim_ids, one value per id in the same order, carrying
 # the corrected quantity as a number rather than as a sentence. The sentence already holds
@@ -44,120 +47,120 @@ here::i_am("errata.qmd")
 entries <- tribble(
   ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
-  3, "bibliographic", "reading", "brief",
-  "The An et al. citation names the authors by their given names",
-  "published p. 192, footnote 9, and p. 203, Section 5",
-  "See [[An, Constantine, Beverly, and Constantin]] (2009); ... (see also [[An, Constantine, Beverly, and Constantin]] 2009,",
-  "See [[An, Frangakis, Musick, and Yiannoutsos]] (2009); ... (see also [[An, Frangakis, Musick, and Yiannoutsos]] 2009,",
-  "The reference list on p. 204 gives the authors correctly: An, Ming-Wen, Constantine E. Frangakis, Beverly S. Musick, and Constantin T. Yiannoutsos. The two citations print the first author's surname followed by the other three authors' given names.",
-  "",
-  NA_character_,
-
-  4, "bibliographic", "reading", "brief",
-  "The Lee reference and its citations give the year as 2010",
-  "published p. 205, the reference list; the citations on p. 188, footnote 1, p. 189, p. 195, and p. 197",
-  "Lee, David S. [[2010]]. Training, wages, and sample selection: Estimating sharp bounds on treatment effects. Review of Economic Studies 76(3):1071–1102. ... (Imai 2008; Mcconnell, Stuart, and Devaney 2008; Lee [[2010]]). ... and Lee ([[2010]]). ... and Lee ([[2010]]) ... Imbens and Manski (2004) and Lee ([[2010]])",
-  "Lee, David S. [[2009]]. Training, wages, and sample selection: Estimating sharp bounds on treatment effects. Review of Economic Studies 76(3):1071–1102. ... (Imai 2008; Mcconnell, Stuart, and Devaney 2008; Lee [[2009]]). ... and Lee ([[2009]]). ... and Lee ([[2009]]) ... Imbens and Manski (2004) and Lee ([[2009]])",
-  "Crossref, doi 10.1111/j.1467-937x.2009.00536.x, gives volume 76, issue 3, pages 1071 to 1102, issued July 2009. The printed volume and pages are those of the 2009 issue. The p. 188 citation's \"Mcconnell\" is corrected in entry 6, and the p. 195 citation of Zhang and Rubin in entry 5.",
-  "",
-  NA_character_,
-
-  5, "bibliographic", "reading", "brief",
-  "The Zhang and Rubin reference and its citation give the year as 2004",
-  "published p. 206, the reference list, and the citation on p. 195",
-  "Zhang, Junni L., and Donald B. Rubin. [[2004]]. Estimation of causal effects via principal stratification when some outcomes are truncated by 'death'. Journal of Educational and Behavioral Statistics 28(4):353–368. ... See Manski (1990, 1995, 2007), Zhang and Rubin ([[2004]]), and Lee (2010)",
-  "Zhang, Junni L., and Donald B. Rubin. [[2003]]. Estimation of causal effects via principal stratification when some outcomes are truncated by 'death'. Journal of Educational and Behavioral Statistics 28(4):353–368. ... See Manski (1990, 1995, 2007), Zhang and Rubin ([[2003]]), and Lee (2010)",
-  "Crossref, doi 10.3102/10769986028004353, gives volume 28, issue 4, pages 353 to 368, issued December 2003. The p. 195 sentence also cites Lee, corrected in entry 4.",
-  "",
-  NA_character_,
-
-  6, "spelling", "reading", "brief",
-  "\"Mcconnell\" for \"McConnell\"",
-  "published p. 188, footnote 1",
-  "(Imai 2008; [[Mcconnell]], Stuart, and Devaney 2008; Lee 2010).",
-  "(Imai 2008; [[McConnell]], Stuart, and Devaney 2008; Lee 2010).",
-  "The reference list on p. 205 spells the name correctly. The year of the Lee citation is corrected in entry 4.",
-  "",
-  NA_character_,
-
-  8, "spelling", "reading", "brief",
-  "\"assuption\" for \"assumption\"",
-  "published appendix p. 3, Section 2",
-  "In this section we present analyses under an [[assuption]] that missingness is independent of potential outcomes",
-  "In this section we present analyses under an [[assumption]] that missingness is independent of potential outcomes",
-  "",
-  "",
-  NA_character_,
-
-  9, "wording", "reading", "brief",
-  "A dropped article in appendix Section 2",
-  "published appendix p. 3, Section 2",
-  "We observe strong average effect of the Polarized treatment on Perceived Polarization in Wave 1 (0.468 points).",
-  "We observe [[a]] strong average effect of the Polarized treatment on Perceived Polarization in Wave 1 (0.468 points).",
-  "",
-  "",
-  NA_character_,
-
-  10, "wording", "reading", "brief",
-  "Four pairs of words run together in the Placebo stimulus",
-  "published appendix p. 7, Section 4.3",
-  "bring in something [[freshand]] the new format really has done that. ... and wanting to show what they can [[dobecause]] they have the chance to do what it is that they do. ... in many different [[packageswhether]] it be color, creed, size, [[anythingbecause]] you get to see these people",
-  "bring in something [[fresh and]] the new format really has done that. ... and wanting to show what they can [[do because]] they have the chance to do what it is that they do. ... in many different [[packages whether]] it be color, creed, size, [[anything because]] you get to see these people",
-  "Each pair most likely lost a punctuation mark between its two words when the appendix was typeset. The source text is not in the replication archive, so the correction supplies only the space and restores no punctuation.",
-  "",
-  NA_character_,
-
   1, "description", "reading", "brief",
   "Section 4.1 gives the size of two arms as the size of the experiment",
-  "published p. 201, Section 4.1",
+  "p. 201, Section 4.1",
   "[[Our experiment comprises]] 1,980 subjects, of which 1,444 had nonmissing responses in the initial sample.",
   "[[The Moderate and Polarized arms of our experiment comprise]] 1,980 subjects, of which 1,444 had nonmissing responses in the initial sample.",
   "The experiment randomized 2,955 subjects to three arms: 995 Moderate, 985 Polarized, and 975 Placebo, counted from the deposited data. Section 4 (p. 200) sets the Placebo arm aside, and Table 1 counts the other two, which is where 1,980 comes from. The appendix analyzes the Placebo arm as well.",
   "",
   NA_character_,
 
-  2, "label", "reading", "brief",
+  2, "description", "reading", "note",
+  "The appendix's title page names an author the article does not",
+  "app. title page",
+  "Peter M. Aronow, Alexander Coppock, Alan S. Gerber, Donald P. Green, and Holger L. Kern",
+  NA_character_,
+  "The title page, dated March 14, 2016, lists five authors. The article's byline lists four and thanks Peter Aronow for his contributions to previous versions of the paper in the authors' note on p. 188. Aronow left the paper, and the appendix's title page was not updated.",
+  "",
+  NA_character_,
+
+  3, "label", "reading", "brief",
   "Table 1's column headings place two initial-sample columns under the follow-up sample",
-  "published p. 202, Table 1",
+  "p. 202, Table 1",
   "Initial Sample: N. Follow-up Sample: [[Responded, Did Not Respond]], Invited, Responded to Invitation.",
   "Initial Sample: N, [[Responded, Did Not Respond]]. Follow-up Sample: Invited, Responded to Invitation.",
   "Section 4.1 (p. 201) says the 1,444 subjects counted under Responded \"had nonmissing responses in the initial sample\", and Responded plus Did Not Respond sums to N in every row. Only the headings move; no cell changes.",
   "",
   NA_character_,
 
-  7, "bibliographic", "reading", "brief",
-  "The Si, Reiter, and Hillygus reference and its citation give the year as 2014",
-  "published p. 206, the reference list, and the citation on p. 188",
-  "Si, Yajuan, Jerome P. Reiter, and D. Sunshine Hillygus. [[2014]]. Semi-parametric selection models for potentially non-ignorable attrition in panel studies with refreshment samples. Political Analysis 23(1):92–112. ... Si, Reiter, and Hillygus [[2014]]),",
-  "Si, Yajuan, Jerome P. Reiter, and D. Sunshine Hillygus. [[2015]]. Semi-parametric selection models for potentially non-ignorable attrition in panel studies with refreshment samples. Political Analysis 23(1):92–112. ... Si, Reiter, and Hillygus [[2015]]),",
-  "Crossref, doi 10.1093/pan/mpu009, gives volume 23, issue 1, pages 92 to 112, issued 2015. The printed volume and pages are those of the 2015 issue.",
+  4, "spelling", "reading", "brief",
+  "\"Mcconnell\" for \"McConnell\"",
+  "p. 188, n. 1",
+  "(Imai 2008; [[Mcconnell]], Stuart, and Devaney 2008; Lee 2010).",
+  "(Imai 2008; [[McConnell]], Stuart, and Devaney 2008; Lee 2010).",
+  "The reference list on p. 205 spells the name correctly. The year of the Lee citation is corrected in entry 11.",
   "",
   NA_character_,
 
-  11, "wording", "reading", "note",
+  5, "spelling", "reading", "brief",
+  "\"assuption\" for \"assumption\"",
+  "app. p. 3, Section 2",
+  "In this section we present analyses under an [[assuption]] that missingness is independent of potential outcomes",
+  "In this section we present analyses under an [[assumption]] that missingness is independent of potential outcomes",
+  "",
+  "",
+  NA_character_,
+
+  6, "wording", "reading", "brief",
+  "A dropped article in appendix Section 2",
+  "app. p. 3, Section 2",
+  "We observe strong average effect of the Polarized treatment on Perceived Polarization in Wave 1 (0.468 points).",
+  "We observe [[a]] strong average effect of the Polarized treatment on Perceived Polarization in Wave 1 (0.468 points).",
+  "",
+  "",
+  NA_character_,
+
+  7, "wording", "reading", "brief",
+  "Four pairs of words run together in the Placebo stimulus",
+  "app. p. 7, Section 4.3",
+  "bring in something [[freshand]] the new format really has done that. ... and wanting to show what they can [[dobecause]] they have the chance to do what it is that they do. ... in many different [[packageswhether]] it be color, creed, size, [[anythingbecause]] you get to see these people",
+  "bring in something [[fresh and]] the new format really has done that. ... and wanting to show what they can [[do because]] they have the chance to do what it is that they do. ... in many different [[packages whether]] it be color, creed, size, [[anything because]] you get to see these people",
+  "Each pair most likely lost a punctuation mark between its two words when the appendix was typeset. The source text is not in the replication archive, so the correction supplies only the space and restores no punctuation.",
+  "",
+  NA_character_,
+
+  8, "wording", "reading", "note",
   "A probable stray word in the Moderate stimulus",
-  "published appendix p. 5, Section 4.1",
+  "app. p. 5, Section 4.1",
   "While he supports gay marriage, he did not push to change federal [[on]] policy on this issue, knowing that it might upset some voters.",
   NA,
   "The sentence reads as \"to change federal policy on this issue\" with a stray \"on\". The appendix reproduces the stimulus that subjects read, and we have not been able to check the fielded instrument, so we do not correct it: if the slip was in the text subjects saw, the appendix reports it faithfully.",
   "",
   NA_character_,
 
-  12, "typographical", "reading", "brief",
+  9, "typography", "reading", "brief",
   "A stray space inside a citation",
-  "published p. 203, Section 5",
+  "p. 203, Section 5",
   "ignorable conditional on observables [[( Little]] and Rubin 2002, ch. 15).",
   "ignorable conditional on observables [[(Little]] and Rubin 2002, ch. 15).",
   "",
   "",
   NA_character_,
 
-  13, "description", "reading", "note",
-  "The appendix's title page names an author the article does not",
-  "published appendix, title page",
-  "Peter M. Aronow, Alexander Coppock, Alan S. Gerber, Donald P. Green, and Holger L. Kern",
+  10, "bibliographic", "reading", "brief",
+  "The An et al. citation names the authors by their given names",
+  "p. 192, n. 9, and p. 203, Section 5",
+  "See [[An, Constantine, Beverly, and Constantin]] (2009); ... (see also [[An, Constantine, Beverly, and Constantin]] 2009,",
+  "See [[An, Frangakis, Musick, and Yiannoutsos]] (2009); ... (see also [[An, Frangakis, Musick, and Yiannoutsos]] 2009,",
+  "The reference list on p. 204 gives the authors correctly: An, Ming-Wen, Constantine E. Frangakis, Beverly S. Musick, and Constantin T. Yiannoutsos. The two citations print the first author's surname followed by the other three authors' given names.",
+  "",
   NA_character_,
-  "The title page, dated March 14, 2016, lists five authors. The article's byline lists four and thanks Peter Aronow for his contributions to previous versions of the paper in the authors' note on p. 188. Aronow left the paper, and the appendix's title page was not updated.",
+
+  11, "bibliographic", "reading", "brief",
+  "The Lee reference and its citations give the year as 2010",
+  "p. 205, refs; the citations on p. 188, n. 1, p. 189, p. 195, and p. 197",
+  "Lee, David S. [[2010]]. Training, wages, and sample selection: Estimating sharp bounds on treatment effects. Review of Economic Studies 76(3):1071–1102. ... (Imai 2008; Mcconnell, Stuart, and Devaney 2008; Lee [[2010]]). ... and Lee ([[2010]]). ... and Lee ([[2010]]) ... Imbens and Manski (2004) and Lee ([[2010]])",
+  "Lee, David S. [[2009]]. Training, wages, and sample selection: Estimating sharp bounds on treatment effects. Review of Economic Studies 76(3):1071–1102. ... (Imai 2008; Mcconnell, Stuart, and Devaney 2008; Lee [[2009]]). ... and Lee ([[2009]]). ... and Lee ([[2009]]) ... Imbens and Manski (2004) and Lee ([[2009]])",
+  "Crossref, doi 10.1111/j.1467-937x.2009.00536.x, gives volume 76, issue 3, pages 1071 to 1102, issued July 2009. The printed volume and pages are those of the 2009 issue. The p. 188 citation's \"Mcconnell\" is corrected in entry 4, and the p. 195 citation of Zhang and Rubin in entry 12.",
+  "",
+  NA_character_,
+
+  12, "bibliographic", "reading", "brief",
+  "The Zhang and Rubin reference and its citation give the year as 2004",
+  "p. 206, refs, and the citation on p. 195",
+  "Zhang, Junni L., and Donald B. Rubin. [[2004]]. Estimation of causal effects via principal stratification when some outcomes are truncated by 'death'. Journal of Educational and Behavioral Statistics 28(4):353–368. ... See Manski (1990, 1995, 2007), Zhang and Rubin ([[2004]]), and Lee (2010)",
+  "Zhang, Junni L., and Donald B. Rubin. [[2003]]. Estimation of causal effects via principal stratification when some outcomes are truncated by 'death'. Journal of Educational and Behavioral Statistics 28(4):353–368. ... See Manski (1990, 1995, 2007), Zhang and Rubin ([[2003]]), and Lee (2010)",
+  "Crossref, doi 10.3102/10769986028004353, gives volume 28, issue 4, pages 353 to 368, issued December 2003. The p. 195 sentence also cites Lee, corrected in entry 11.",
+  "",
+  NA_character_,
+
+  13, "bibliographic", "reading", "brief",
+  "The Si, Reiter, and Hillygus reference and its citation give the year as 2014",
+  "p. 206, refs, and the citation on p. 188",
+  "Si, Yajuan, Jerome P. Reiter, and D. Sunshine Hillygus. [[2014]]. Semi-parametric selection models for potentially non-ignorable attrition in panel studies with refreshment samples. Political Analysis 23(1):92–112. ... Si, Reiter, and Hillygus [[2014]]),",
+  "Si, Yajuan, Jerome P. Reiter, and D. Sunshine Hillygus. [[2015]]. Semi-parametric selection models for potentially non-ignorable attrition in panel studies with refreshment samples. Political Analysis 23(1):92–112. ... Si, Reiter, and Hillygus [[2015]]),",
+  "Crossref, doi 10.1093/pan/mpu009, gives volume 23, issue 1, pages 92 to 112, issued 2015. The printed volume and pages are those of the 2015 issue.",
   "",
   NA_character_
 ) |>
@@ -225,37 +228,30 @@ emit_entry <- function(n) {
 }
 ```
 
-This note lists `r sum(entries$form != "note")` corrections and two unresolved items in "Combining Double Sampling and Bounds to Address Nonignorable Missing Outcomes in Randomized Experiments," published in *Political Analysis* 25(2):188--206, doi [10.1017/pan.2016.6](https://doi.org/10.1017/pan.2016.6), and its online appendix. **None of them changes an estimate or a conclusion of the paper.** In the article, one sentence gives the size of two arms as the size of the whole experiment, and Table 1's column headings misplace two columns. Four are citations: one prints its authors' given names in place of their surnames, and three give the wrong year. The rest are a misspelled name in a citation and, in the appendix, a misspelling, a dropped article, and words run together in a treatment stimulus. Item 11 flags a probable stray word in a stimulus without correcting it. Item 13 notes that the appendix's title page names an author the article does not.
+This note lists `r sum(entries$form != "note")` corrections and two unresolved items in "Combining Double Sampling and Bounds to Address Nonignorable Missing Outcomes in Randomized Experiments," published in *Political Analysis* 25(2):188--206, doi [10.1017/pan.2016.6](https://doi.org/10.1017/pan.2016.6), and its online appendix. **None of them changes an estimate or a conclusion of the paper.** In the article, one sentence gives the size of two arms as the size of the whole experiment, and Table 1's column headings misplace two columns. Four are citations: one prints its authors' given names in place of their surnames, and three give the wrong year. The rest are a misspelled name in a citation and, in the appendix, a misspelling, a dropped article, and words run together in a treatment stimulus. Item 8 flags a probable stray word in a stimulus without correcting it. Item 2 notes that the appendix's title page names an author the article does not.
 
 All were found by reading the article and its appendix word by word, and each quotation was checked against an image of the published page. The years were checked against the Crossref record named in each entry's note, and the arm sizes in entry 1 against the deposited replication archive, doi [10.7910/DVN/AQB4MP](https://doi.org/10.7910/DVN/AQB4MP). The code supporting the maintained analysis is at [github.com/active-maintenance-aec/coppock_etal_2017](https://github.com/active-maintenance-aec/coppock_etal_2017).
 
-# The article
-
-```{r article-entries, results="asis"}
-walk(1:2, emit_entry)
+```{r render-entries, results="asis"}
+walk(entries$entry[entries$class != "bibliographic"], emit_entry)
 ```
 
 # Citations and the reference list
 
 ```{r citation-entries, results="asis"}
-walk(3:7, emit_entry)
-```
-
-# The appendix
-
-```{r appendix-entries, results="asis"}
-walk(8:11, emit_entry)
-```
-
-# The article, continued
-
-```{r article-continued-entries, results="asis"}
-walk(12, emit_entry)
+walk(entries$entry[entries$class == "bibliographic"], emit_entry)
 ```
 
 ```{r emit-spine}
 # The machine-readable spine, written wherever this document is rendered. Anything else
 # that needs these entries reads it rather than keeping its own copy, so the two cannot
 # drift.
+# The spine's vocabularies are closed (cleanup of 2026-11-07): a value outside them is a
+# typo, and the edition builders read these columns to shape every entry.
+stopifnot(
+  all(entries$class %in% c("quantity", "description", "interpretation", "definition", "label", "float", "cross_reference", "wording", "spelling", "typography", "bibliographic")),
+  all(entries$form %in% c("full", "brief", "note")),
+  all(entries$source %in% c("pipeline", "reading", "reference_audit", "publisher_record", "authors_archive", "proof"))
+)
 write_csv(entries, here("errata_entries.csv"))
 ```
