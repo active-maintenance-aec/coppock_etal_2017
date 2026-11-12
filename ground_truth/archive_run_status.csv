@@ -1,0 +1,7 @@
+pass,script,role,exit_status,outcome,stopped_at
+as_shipped,experimental_analysis_main_text.R,analysis,1,error,Error: object 'mturk_results' not found
+as_shipped,experimental_analysis_appendix.R,analysis,0,clean,NA
+as_shipped,simulation_analysis.R,analysis,0,clean,NA
+stripped,experimental_analysis_main_text.R,analysis,NA,not_run,"Not run: the deposit ships no derived object, so the copy stripped to data plus code is the copy as shipped"
+stripped,experimental_analysis_appendix.R,analysis,NA,not_run,"Not run: the deposit ships no derived object, so the copy stripped to data plus code is the copy as shipped"
+stripped,simulation_analysis.R,analysis,NA,not_run,"Not run: the deposit ships no derived object, so the copy stripped to data plus code is the copy as shipped"

@@ -20,7 +20,10 @@
 - [Maintained rewrite verification](#maintained-rewrite-verification)
 - [R environment](#r-environment)
 
-**Archived at Zenodo:** [doi:10.5281/zenodo.24168330](https://doi.org/10.5281/zenodo.24168330). This DOI always resolves to the latest release of the maintained version.
+**Archived at Zenodo:**
+[doi:10.5281/zenodo.24168330](https://doi.org/10.5281/zenodo.24168330).
+This DOI always resolves to the latest release of the maintained
+version.
 
 *Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
 
@@ -52,11 +55,14 @@ downloading anything. `ground_truth/` ties every published number to the
 code that produces it: `published_claims.csv` is the hand extraction of
 the article, `build_ground_truth.R` generates the comparison and runs
 the coverage gate, and `coppock_etal_2017_ground_truth.csv` is what it
-writes. `original/` is created by the download script and is
-deliberately absent from the repository. `errata.qmd` corrects the
-published article, rendering to `coppock_etal_2017_errata.pdf` at the
-root. This file is the reproducibility report, also available as a PDF
-in `report/`.
+writes, with `float_coverage.csv` beside it. `run_archive.R` runs the
+deposited scripts from a scratch copy of the deposit and writes
+`archive_run_status.csv` and `archive_overwrites.csv`; it installs the
+deposit’s own packages and is run by hand rather than from `run_all.R`.
+`original/` is created by the download script and is deliberately absent
+from the repository. `errata.qmd` corrects the published article,
+rendering to `coppock_etal_2017_errata.pdf` at the root. This file is
+the reproducibility report, also available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this
 repository maintains. See `LICENSE`.
@@ -350,6 +356,75 @@ unchanged to the last decimal.
 
 | Location | Claim | Paper | Archive | Match |
 |:---|:---|:---|:---|:---|
+| Appendix Figure 1 | appx_ci_shrinks_region_does_not |  |  |  |
+| Appendix Table 1 | ta1_all_ex_wave1_n | 2156 | 2156 | TRUE |
+| Appendix Table 1 | ta1_all_ex_wave1_r2 | 0.001 | 0.001 | TRUE |
+| Appendix Table 1 | ta1_all_ex_wave2_n | 2156 | 2156 | TRUE |
+| Appendix Table 1 | ta1_all_ex_wave2_r2 | 0.0004 | 0.0004 | TRUE |
+| Appendix Table 1 | ta1_all_pp_wave1_n | 2156 | 2156 | TRUE |
+| Appendix Table 1 | ta1_all_pp_wave1_r2 | 0.024 | 0.024 | TRUE |
+| Appendix Table 1 | ta1_all_pp_wave2_n | 2156 | 2156 | TRUE |
+| Appendix Table 1 | ta1_all_pp_wave2_r2 | 0.002 | 0.002 | TRUE |
+| Appendix Table 1 | ta1_constant_ex_wave1_coef | 1.531 | 1.531 | TRUE |
+| Appendix Table 1 | ta1_constant_ex_wave1_se | 0.024 | 0.024 | TRUE |
+| Appendix Table 1 | ta1_constant_ex_wave2_coef | 1.617 | 1.617 | TRUE |
+| Appendix Table 1 | ta1_constant_ex_wave2_se | 0.024 | 0.024 | TRUE |
+| Appendix Table 1 | ta1_constant_pp_wave1_coef | 3.108 | 3.108 | TRUE |
+| Appendix Table 1 | ta1_constant_pp_wave1_se | 0.046 | 0.046 | TRUE |
+| Appendix Table 1 | ta1_constant_pp_wave2_coef | 3.542 | 3.542 | TRUE |
+| Appendix Table 1 | ta1_constant_pp_wave2_se | 0.046 | 0.046 | TRUE |
+| Appendix Table 1 | ta1_placebo_ex_wave1_coef | 0.019 | 0.019 | TRUE |
+| Appendix Table 1 | ta1_placebo_ex_wave1_se | 0.035 | 0.035 | TRUE |
+| Appendix Table 1 | ta1_placebo_ex_wave2_coef | -0.011 | -0.011 | TRUE |
+| Appendix Table 1 | ta1_placebo_ex_wave2_se | 0.034 | 0.034 | TRUE |
+| Appendix Table 1 | ta1_placebo_pp_wave1_coef | 0.352 | 0.352 | TRUE |
+| Appendix Table 1 | ta1_placebo_pp_wave1_se | 0.067 | 0.067 | TRUE |
+| Appendix Table 1 | ta1_placebo_pp_wave2_coef | 0.042 | 0.042 | TRUE |
+| Appendix Table 1 | ta1_placebo_pp_wave2_se | 0.066 | 0.066 | TRUE |
+| Appendix Table 1 | ta1_polarized_ex_wave1_coef | -0.031 | -0.031 | TRUE |
+| Appendix Table 1 | ta1_polarized_ex_wave1_se | 0.034 | 0.034 | TRUE |
+| Appendix Table 1 | ta1_polarized_ex_wave2_coef | -0.030 | -0.030 | TRUE |
+| Appendix Table 1 | ta1_polarized_ex_wave2_se | 0.034 | 0.034 | TRUE |
+| Appendix Table 1 | ta1_polarized_pp_wave1_coef | 0.468 | 0.468 | TRUE |
+| Appendix Table 1 | ta1_polarized_pp_wave1_se | 0.067 | 0.067 | TRUE |
+| Appendix Table 1 | ta1_polarized_pp_wave2_coef | 0.126 | 0.126 | TRUE |
+| Appendix Table 1 | ta1_polarized_pp_wave2_se | 0.066 | 0.066 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_ci_lower | -0.4778 | -0.4778 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_ci_upper | 0.5769 | 0.5769 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_var_high | 0.0067 | 0.0067 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_var_low | 0.0083 | 0.0083 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_wcb_high | 0.4426 | 0.4426 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_wcb_low | -0.3284 | -0.3284 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_ci_lower | -0.6119 | -0.6119 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_ci_upper | 0.5044 | 0.5044 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_var_high | 0.0114 | 0.0114 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_var_low | 0.0106 | 0.0106 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_wcb_high | 0.3286 | 0.3286 | TRUE |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_wcb_low | -0.4424 | -0.4424 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_ci_lower | -0.6087 | -0.6087 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_ci_upper | 0.6032 | 0.6032 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_var_high | 0.0095 | 0.0095 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_var_low | 0.0070 | 0.0070 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_wcb_high | 0.4426 | 0.4426 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_wcb_low | -0.4710 | -0.4710 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_ci_lower | -0.5283 | -0.5283 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_ci_upper | 0.7452 | 0.7452 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_var_high | 0.0111 | 0.0111 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_var_low | 0.0129 | 0.0129 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_wcb_high | 0.5718 | 0.5718 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_wcb_low | -0.3417 | -0.3417 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_ci_lower | -0.6004 | -0.6004 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_ci_upper | 0.6944 | 0.6944 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_var_high | 0.0094 | 0.0094 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_var_low | 0.0085 | 0.0085 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_wcb_high | 0.5350 | 0.5350 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_wcb_low | -0.4491 | -0.4491 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_ci_lower | -0.6171 | -0.6171 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_ci_upper | 0.7262 | 0.7262 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_var_high | 0.0114 | 0.0114 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_var_low | 0.0124 | 0.0124 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_wcb_high | 0.5502 | 0.5502 | TRUE |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_wcb_low | -0.4339 | -0.4339 | TRUE |
 | appendix_section_1_p2 | appx_n_large | 80000 |  |  |
 | appendix_section_1_p2 | appx_n_small | 800 |  |  |
 | appendix_section_1_p2 | appx_n2_large | 5000 |  |  |
@@ -362,12 +437,11 @@ unchanged to the last decimal.
 | appendix_section_2_p3 | appx_wave1_effect_strong |  |  |  |
 | appendix_section_2_p3 | appx_wave2_effect | 0.126 |  |  |
 | appendix_section_3_p4 | appx_pairwise_columns | 6 |  |  |
-| figure_1 | sim_p2_zero_is_wcb |  |  |  |
-| figure_1 | sim_point_identified |  |  |  |
-| figure_1 | sim_region_smaller_in_p1 |  |  |  |
-| figure_1 | sim_width_shrinks_to_zero |  |  |  |
-| figure_2 | fig2_delta_star | 0.07 |  | 0 |
-| figure_a1 | appx_ci_shrinks_region_does_not |  |  |  |
+| Figure 1 | sim_p2_zero_is_wcb |  |  |  |
+| Figure 1 | sim_point_identified |  |  |  |
+| Figure 1 | sim_region_smaller_in_p1 |  |  |  |
+| Figure 1 | sim_width_shrinks_to_zero |  |  |  |
+| Figure 2 | fig2_delta_star | 0.07 |  | FALSE |
 | section_3_p11 | sim_n_followup | 50 |  |  |
 | section_3_p11 | sim_n_total | 800 |  |  |
 | section_3_p11 | sim_p1_max | 0.75 |  |  |
@@ -386,141 +460,73 @@ unchanged to the last decimal.
 | section_4.1_p14 | app_n_subjects | 1980 |  |  |
 | section_4.2_p14 | app_outcome_max | 6 |  |  |
 | section_4.2_p14 | app_outcome_min | 0 |  |  |
-| section_4.2_p14 | txt_ci_width_ds_ps | 1.23 | 1.23 | 1 |
-| section_4.2_p14 | txt_ci_width_no_ds | 3.50 | 3.50 | 1 |
-| section_4.2_p14 | txt_ds_ps_ci_lower | -0.53 | -0.53 | 1 |
-| section_4.2_p14 | txt_ds_ps_ci_upper | 0.70 | 0.70 | 1 |
-| section_4.2_p14 | txt_ds_ps_wcb_high | 0.53 | 0.53 | 1 |
-| section_4.2_p14 | txt_ds_ps_wcb_low | -0.34 | -0.34 | 1 |
-| section_4.2_p14 | txt_ds_wcb_high | 0.57 | 0.57 | 1 |
-| section_4.2_p14 | txt_ds_wcb_low | -0.34 | -0.34 | 1 |
-| section_4.2_p14 | txt_naive_ate_coef | 0.126 | 0.126 | 1 |
-| section_4.2_p14 | txt_naive_ate_pval | 0.057 | 0.057 | 1 |
-| section_4.2_p14 | txt_naive_ate_se | 0.066 | 0.066 | 1 |
-| section_4.2_p14 | txt_no_ds_ci_lower | -1.67 | -1.67 | 1 |
-| section_4.2_p14 | txt_no_ds_ci_upper | 1.84 | 1.84 | 1 |
-| section_4.2_p14 | txt_no_ds_wcb_high | 1.71 | 1.71 | 1 |
-| section_4.2_p14 | txt_no_ds_wcb_low | -1.54 | -1.54 | 1 |
-| section_4.2_p14 | txt_reduction_pct | 0.65 |  | 0 |
+| section_4.2_p14 | txt_ci_width_ds_ps | 1.23 | 1.23 | TRUE |
+| section_4.2_p14 | txt_ci_width_no_ds | 3.50 | 3.50 | TRUE |
+| section_4.2_p14 | txt_ds_ps_ci_lower | -0.53 | -0.53 | TRUE |
+| section_4.2_p14 | txt_ds_ps_ci_upper | 0.70 | 0.70 | TRUE |
+| section_4.2_p14 | txt_ds_ps_wcb_high | 0.53 | 0.53 | TRUE |
+| section_4.2_p14 | txt_ds_ps_wcb_low | -0.34 | -0.34 | TRUE |
+| section_4.2_p14 | txt_ds_wcb_high | 0.57 | 0.57 | TRUE |
+| section_4.2_p14 | txt_ds_wcb_low | -0.34 | -0.34 | TRUE |
+| section_4.2_p14 | txt_naive_ate_coef | 0.126 | 0.126 | TRUE |
+| section_4.2_p14 | txt_naive_ate_pval | 0.057 | 0.057 | TRUE |
+| section_4.2_p14 | txt_naive_ate_se | 0.066 | 0.066 | TRUE |
+| section_4.2_p14 | txt_no_ds_ci_lower | -1.67 | -1.67 | TRUE |
+| section_4.2_p14 | txt_no_ds_ci_upper | 1.84 | 1.84 | TRUE |
+| section_4.2_p14 | txt_no_ds_wcb_high | 1.71 | 1.71 | TRUE |
+| section_4.2_p14 | txt_no_ds_wcb_low | -1.54 | -1.54 | TRUE |
+| section_4.2_p14 | txt_reduction_pct | 0.65 |  | FALSE |
 | section_4.3_p15 | app_naive_sig_10 |  |  |  |
 | section_4.3_p15 | app_no_delta_star_05 |  |  |  |
-| section_4.3_p15 | txt_delta_star | 0.07 |  | 0 |
-| table_1 | t1_moderate_did_not_respond | 264 | 264 | 1 |
-| table_1 | t1_moderate_invited | 50 | 50 | 1 |
-| table_1 | t1_moderate_n_initial | 995 | 995 | 1 |
-| table_1 | t1_moderate_responded | 731 | 731 | 1 |
-| table_1 | t1_moderate_responded_to_invitation | 39 | 39 | 1 |
-| table_1 | t1_polarized_did_not_respond | 272 | 272 | 1 |
-| table_1 | t1_polarized_invited | 50 | 50 | 1 |
-| table_1 | t1_polarized_n_initial | 985 | 985 | 1 |
-| table_1 | t1_polarized_responded | 713 | 713 | 1 |
-| table_1 | t1_polarized_responded_to_invitation | 33 | 33 | 1 |
-| table_1 | t1_total_did_not_respond | 536 | 536 | 1 |
-| table_1 | t1_total_invited | 100 | 100 | 1 |
-| table_1 | t1_total_n_initial | 1980 | 1980 | 1 |
-| table_1 | t1_total_responded | 1444 | 1444 | 1 |
-| table_1 | t1_total_responded_to_invitation | 72 | 72 | 1 |
-| table_2 | app_samples_similar |  |  |  |
-| table_2 | t2_moderate_ds_mean | 3.583 | 3.583 | 1 |
-| table_2 | t2_moderate_ds_n | 39 | 39 | 1 |
-| table_2 | t2_moderate_ds_sd | 1.367 | 1.367 | 1 |
-| table_2 | t2_moderate_ir_mean | 3.542 | 3.542 | 1 |
-| table_2 | t2_moderate_ir_n | 731 | 731 | 1 |
-| table_2 | t2_moderate_ir_sd | 1.243 | 1.243 | 1 |
-| table_2 | t2_polarized_ds_mean | 3.826 | 3.826 | 1 |
-| table_2 | t2_polarized_ds_n | 33 | 33 | 1 |
-| table_2 | t2_polarized_ds_sd | 1.313 | 1.313 | 1 |
-| table_2 | t2_polarized_ir_mean | 3.668 | 3.668 | 1 |
-| table_2 | t2_polarized_ir_n | 713 | 713 | 1 |
-| table_2 | t2_polarized_ir_sd | 1.270 | 1.270 | 1 |
-| table_3 | app_ds_narrows |  |  |  |
-| table_3 | app_wcb_uninformative |  |  |  |
-| table_3 | t3_ds_ci_lower | -0.5283 | -0.5283 | 1 |
-| table_3 | t3_ds_ci_upper | 0.7452 | 0.7452 | 1 |
-| table_3 | t3_ds_ps_ci_lower | -0.5290 | -0.5290 | 1 |
-| table_3 | t3_ds_ps_ci_upper | 0.6966 | 0.6966 | 1 |
-| table_3 | t3_ds_ps_var_high | 0.0108 | 0.0108 | 1 |
-| table_3 | t3_ds_ps_var_low | 0.0126 | 0.0126 | 1 |
-| table_3 | t3_ds_ps_wcb_high | 0.5257 | 0.5257 | 1 |
-| table_3 | t3_ds_ps_wcb_low | -0.3444 | -0.3444 | 1 |
-| table_3 | t3_ds_var_high | 0.0111 | 0.0111 | 1 |
-| table_3 | t3_ds_var_low | 0.0129 | 0.0129 | 1 |
-| table_3 | t3_ds_wcb_high | 0.5718 | 0.5718 | 1 |
-| table_3 | t3_ds_wcb_low | -0.3417 | -0.3417 | 1 |
-| table_3 | t3_no_ds_ci_lower | -1.6691 | -1.6691 | 1 |
-| table_3 | t3_no_ds_ci_upper | 1.8359 | 1.8359 | 1 |
-| table_3 | t3_no_ds_var_high | 0.0059 | 0.0059 | 1 |
-| table_3 | t3_no_ds_var_low | 0.0062 | 0.0062 | 1 |
-| table_3 | t3_no_ds_wcb_high | 1.7097 | 1.7097 | 1 |
-| table_3 | t3_no_ds_wcb_low | -1.5391 | -1.5391 | 1 |
-| table_a1 | ta1_all_ex_wave1_n | 2156 | 2156 | 1 |
-| table_a1 | ta1_all_ex_wave1_r2 | 0.001 | 0.001 | 1 |
-| table_a1 | ta1_all_ex_wave2_n | 2156 | 2156 | 1 |
-| table_a1 | ta1_all_ex_wave2_r2 | 0.0004 | 0.0004 | 1 |
-| table_a1 | ta1_all_pp_wave1_n | 2156 | 2156 | 1 |
-| table_a1 | ta1_all_pp_wave1_r2 | 0.024 | 0.024 | 1 |
-| table_a1 | ta1_all_pp_wave2_n | 2156 | 2156 | 1 |
-| table_a1 | ta1_all_pp_wave2_r2 | 0.002 | 0.002 | 1 |
-| table_a1 | ta1_constant_ex_wave1_coef | 1.531 | 1.531 | 1 |
-| table_a1 | ta1_constant_ex_wave1_se | 0.024 | 0.024 | 1 |
-| table_a1 | ta1_constant_ex_wave2_coef | 1.617 | 1.617 | 1 |
-| table_a1 | ta1_constant_ex_wave2_se | 0.024 | 0.024 | 1 |
-| table_a1 | ta1_constant_pp_wave1_coef | 3.108 | 3.108 | 1 |
-| table_a1 | ta1_constant_pp_wave1_se | 0.046 | 0.046 | 1 |
-| table_a1 | ta1_constant_pp_wave2_coef | 3.542 | 3.542 | 1 |
-| table_a1 | ta1_constant_pp_wave2_se | 0.046 | 0.046 | 1 |
-| table_a1 | ta1_placebo_ex_wave1_coef | 0.019 | 0.019 | 1 |
-| table_a1 | ta1_placebo_ex_wave1_se | 0.035 | 0.035 | 1 |
-| table_a1 | ta1_placebo_ex_wave2_coef | -0.011 | -0.011 | 1 |
-| table_a1 | ta1_placebo_ex_wave2_se | 0.034 | 0.034 | 1 |
-| table_a1 | ta1_placebo_pp_wave1_coef | 0.352 | 0.352 | 1 |
-| table_a1 | ta1_placebo_pp_wave1_se | 0.067 | 0.067 | 1 |
-| table_a1 | ta1_placebo_pp_wave2_coef | 0.042 | 0.042 | 1 |
-| table_a1 | ta1_placebo_pp_wave2_se | 0.066 | 0.066 | 1 |
-| table_a1 | ta1_polarized_ex_wave1_coef | -0.031 | -0.031 | 1 |
-| table_a1 | ta1_polarized_ex_wave1_se | 0.034 | 0.034 | 1 |
-| table_a1 | ta1_polarized_ex_wave2_coef | -0.030 | -0.030 | 1 |
-| table_a1 | ta1_polarized_ex_wave2_se | 0.034 | 0.034 | 1 |
-| table_a1 | ta1_polarized_pp_wave1_coef | 0.468 | 0.468 | 1 |
-| table_a1 | ta1_polarized_pp_wave1_se | 0.067 | 0.067 | 1 |
-| table_a1 | ta1_polarized_pp_wave2_coef | 0.126 | 0.126 | 1 |
-| table_a1 | ta1_polarized_pp_wave2_se | 0.066 | 0.066 | 1 |
-| table_a2 | ta2_mod_vs_placebo_ex_ci_lower | -0.4778 | -0.4778 | 1 |
-| table_a2 | ta2_mod_vs_placebo_ex_ci_upper | 0.5769 | 0.5769 | 1 |
-| table_a2 | ta2_mod_vs_placebo_ex_var_high | 0.0067 | 0.0067 | 1 |
-| table_a2 | ta2_mod_vs_placebo_ex_var_low | 0.0083 | 0.0083 | 1 |
-| table_a2 | ta2_mod_vs_placebo_ex_wcb_high | 0.4426 | 0.4426 | 1 |
-| table_a2 | ta2_mod_vs_placebo_ex_wcb_low | -0.3284 | -0.3284 | 1 |
-| table_a2 | ta2_mod_vs_placebo_pp_ci_lower | -0.6119 | -0.6119 | 1 |
-| table_a2 | ta2_mod_vs_placebo_pp_ci_upper | 0.5044 | 0.5044 | 1 |
-| table_a2 | ta2_mod_vs_placebo_pp_var_high | 0.0114 | 0.0114 | 1 |
-| table_a2 | ta2_mod_vs_placebo_pp_var_low | 0.0106 | 0.0106 | 1 |
-| table_a2 | ta2_mod_vs_placebo_pp_wcb_high | 0.3286 | 0.3286 | 1 |
-| table_a2 | ta2_mod_vs_placebo_pp_wcb_low | -0.4424 | -0.4424 | 1 |
-| table_a2 | ta2_pol_vs_mod_ex_ci_lower | -0.6087 | -0.6087 | 1 |
-| table_a2 | ta2_pol_vs_mod_ex_ci_upper | 0.6032 | 0.6032 | 1 |
-| table_a2 | ta2_pol_vs_mod_ex_var_high | 0.0095 | 0.0095 | 1 |
-| table_a2 | ta2_pol_vs_mod_ex_var_low | 0.0070 | 0.0070 | 1 |
-| table_a2 | ta2_pol_vs_mod_ex_wcb_high | 0.4426 | 0.4426 | 1 |
-| table_a2 | ta2_pol_vs_mod_ex_wcb_low | -0.4710 | -0.4710 | 1 |
-| table_a2 | ta2_pol_vs_mod_pp_ci_lower | -0.5283 | -0.5283 | 1 |
-| table_a2 | ta2_pol_vs_mod_pp_ci_upper | 0.7452 | 0.7452 | 1 |
-| table_a2 | ta2_pol_vs_mod_pp_var_high | 0.0111 | 0.0111 | 1 |
-| table_a2 | ta2_pol_vs_mod_pp_var_low | 0.0129 | 0.0129 | 1 |
-| table_a2 | ta2_pol_vs_mod_pp_wcb_high | 0.5718 | 0.5718 | 1 |
-| table_a2 | ta2_pol_vs_mod_pp_wcb_low | -0.3417 | -0.3417 | 1 |
-| table_a2 | ta2_pol_vs_placebo_ex_ci_lower | -0.6004 | -0.6004 | 1 |
-| table_a2 | ta2_pol_vs_placebo_ex_ci_upper | 0.6944 | 0.6944 | 1 |
-| table_a2 | ta2_pol_vs_placebo_ex_var_high | 0.0094 | 0.0094 | 1 |
-| table_a2 | ta2_pol_vs_placebo_ex_var_low | 0.0085 | 0.0085 | 1 |
-| table_a2 | ta2_pol_vs_placebo_ex_wcb_high | 0.5350 | 0.5350 | 1 |
-| table_a2 | ta2_pol_vs_placebo_ex_wcb_low | -0.4491 | -0.4491 | 1 |
-| table_a2 | ta2_pol_vs_placebo_pp_ci_lower | -0.6171 | -0.6171 | 1 |
-| table_a2 | ta2_pol_vs_placebo_pp_ci_upper | 0.7262 | 0.7262 | 1 |
-| table_a2 | ta2_pol_vs_placebo_pp_var_high | 0.0114 | 0.0114 | 1 |
-| table_a2 | ta2_pol_vs_placebo_pp_var_low | 0.0124 | 0.0124 | 1 |
-| table_a2 | ta2_pol_vs_placebo_pp_wcb_high | 0.5502 | 0.5502 | 1 |
-| table_a2 | ta2_pol_vs_placebo_pp_wcb_low | -0.4339 | -0.4339 | 1 |
+| section_4.3_p15 | txt_delta_star | 0.07 |  | FALSE |
+| Table 1 | t1_moderate_did_not_respond | 264 | 264 | TRUE |
+| Table 1 | t1_moderate_invited | 50 | 50 | TRUE |
+| Table 1 | t1_moderate_n_initial | 995 | 995 | TRUE |
+| Table 1 | t1_moderate_responded | 731 | 731 | TRUE |
+| Table 1 | t1_moderate_responded_to_invitation | 39 | 39 | TRUE |
+| Table 1 | t1_polarized_did_not_respond | 272 | 272 | TRUE |
+| Table 1 | t1_polarized_invited | 50 | 50 | TRUE |
+| Table 1 | t1_polarized_n_initial | 985 | 985 | TRUE |
+| Table 1 | t1_polarized_responded | 713 | 713 | TRUE |
+| Table 1 | t1_polarized_responded_to_invitation | 33 | 33 | TRUE |
+| Table 1 | t1_total_did_not_respond | 536 | 536 | TRUE |
+| Table 1 | t1_total_invited | 100 | 100 | TRUE |
+| Table 1 | t1_total_n_initial | 1980 | 1980 | TRUE |
+| Table 1 | t1_total_responded | 1444 | 1444 | TRUE |
+| Table 1 | t1_total_responded_to_invitation | 72 | 72 | TRUE |
+| Table 2 | app_samples_similar |  |  |  |
+| Table 2 | t2_moderate_ds_mean | 3.583 | 3.583 | TRUE |
+| Table 2 | t2_moderate_ds_n | 39 | 39 | TRUE |
+| Table 2 | t2_moderate_ds_sd | 1.367 | 1.367 | TRUE |
+| Table 2 | t2_moderate_ir_mean | 3.542 | 3.542 | TRUE |
+| Table 2 | t2_moderate_ir_n | 731 | 731 | TRUE |
+| Table 2 | t2_moderate_ir_sd | 1.243 | 1.243 | TRUE |
+| Table 2 | t2_polarized_ds_mean | 3.826 | 3.826 | TRUE |
+| Table 2 | t2_polarized_ds_n | 33 | 33 | TRUE |
+| Table 2 | t2_polarized_ds_sd | 1.313 | 1.313 | TRUE |
+| Table 2 | t2_polarized_ir_mean | 3.668 | 3.668 | TRUE |
+| Table 2 | t2_polarized_ir_n | 713 | 713 | TRUE |
+| Table 2 | t2_polarized_ir_sd | 1.270 | 1.270 | TRUE |
+| Table 3 | app_ds_narrows |  |  |  |
+| Table 3 | app_wcb_uninformative |  |  |  |
+| Table 3 | t3_ds_ci_lower | -0.5283 | -0.5283 | TRUE |
+| Table 3 | t3_ds_ci_upper | 0.7452 | 0.7452 | TRUE |
+| Table 3 | t3_ds_ps_ci_lower | -0.5290 | -0.5290 | TRUE |
+| Table 3 | t3_ds_ps_ci_upper | 0.6966 | 0.6966 | TRUE |
+| Table 3 | t3_ds_ps_var_high | 0.0108 | 0.0108 | TRUE |
+| Table 3 | t3_ds_ps_var_low | 0.0126 | 0.0126 | TRUE |
+| Table 3 | t3_ds_ps_wcb_high | 0.5257 | 0.5257 | TRUE |
+| Table 3 | t3_ds_ps_wcb_low | -0.3444 | -0.3444 | TRUE |
+| Table 3 | t3_ds_var_high | 0.0111 | 0.0111 | TRUE |
+| Table 3 | t3_ds_var_low | 0.0129 | 0.0129 | TRUE |
+| Table 3 | t3_ds_wcb_high | 0.5718 | 0.5718 | TRUE |
+| Table 3 | t3_ds_wcb_low | -0.3417 | -0.3417 | TRUE |
+| Table 3 | t3_no_ds_ci_lower | -1.6691 | -1.6691 | TRUE |
+| Table 3 | t3_no_ds_ci_upper | 1.8359 | 1.8359 | TRUE |
+| Table 3 | t3_no_ds_var_high | 0.0059 | 0.0059 | TRUE |
+| Table 3 | t3_no_ds_var_low | 0.0062 | 0.0062 | TRUE |
+| Table 3 | t3_no_ds_wcb_high | 1.7097 | 1.7097 | TRUE |
+| Table 3 | t3_no_ds_wcb_low | -1.5391 | -1.5391 | TRUE |
 
 Ground truth: published value against the value the deposited scripts
 produce on current R. A blank Archive cell means the script stops before
@@ -632,183 +638,183 @@ that figure diffable rather than merely inspectable.
 
 | Location | Claim | Paper | Rewrite | Match | Holds |
 |:---|:---|:---|:---|:---|:---|
-| appendix_section_1_p2 | appx_n_large | 80000 | 80000 | 1 |  |
-| appendix_section_1_p2 | appx_n_small | 800 | 800 | 1 |  |
-| appendix_section_1_p2 | appx_n2_large | 5000 | 5000 | 1 |  |
-| appendix_section_1_p2 | appx_n2_small | 50 | 50 | 1 |  |
-| appendix_section_1_p2 | appx_size_factor | 100 | 100 | 1 |  |
-| appendix_section_1_p2 | appx_two_scenarios | 2 | 2 | 1 |  |
-| appendix_section_2_p3 | appx_effect_diminished |  |  |  | 1 |
-| appendix_section_2_p3 | appx_extremity_negligible |  |  |  | 1 |
-| appendix_section_2_p3 | appx_wave1_effect | 0.468 | 0.468375086098889 | 1 |  |
-| appendix_section_2_p3 | appx_wave1_effect_strong |  |  |  | 1 |
-| appendix_section_2_p3 | appx_wave2_effect | 0.126 | 0.125886650690804 | 1 |  |
-| appendix_section_3_p4 | appx_pairwise_columns | 6 | 6 | 1 |  |
-| figure_1 | sim_p2_zero_is_wcb |  |  |  | 1 |
-| figure_1 | sim_point_identified |  |  |  | 1 |
-| figure_1 | sim_region_smaller_in_p1 |  |  |  | 1 |
-| figure_1 | sim_width_shrinks_to_zero |  |  |  | 1 |
-| figure_2 | fig2_delta_star | 0.07 | 0.0707070707070707 | 1 |  |
-| figure_a1 | appx_ci_shrinks_region_does_not |  |  |  | 1 |
-| section_3_p11 | sim_n_followup | 50 | 50 | 1 |  |
-| section_3_p11 | sim_n_total | 800 | 800 | 1 |  |
-| section_3_p11 | sim_p1_max | 0.75 | 0.75 | 1 |  |
-| section_3_p11 | sim_p1_min | 0.25 | 0.25 | 1 |  |
-| section_3_p11 | sim_p2_max | 1 | 1 | 1 |  |
-| section_3_p11 | sim_p2_min | 0 | 0 | 1 |  |
-| section_3_p11 | sim_true_ate | 0 | 0 | 1 |  |
-| section_3_p12 | sim_n_scenarios | 3 | 3 | 1 |  |
-| section_3_p12 | sim_p1_scenario_high | 0.75 | 0.75 | 1 |  |
-| section_3_p12 | sim_p1_scenario_low | 0.25 | 0.25 | 1 |  |
-| section_3_p12 | sim_p1_scenario_mid | 0.50 | 0.5 | 1 |  |
-| section_4.1_p14 | app_n_completed | 72 | 72 | 1 |  |
-| section_4.1_p14 | app_n_invited | 100 | 100 | 1 |  |
-| section_4.1_p14 | app_n_invited_per_arm | 50 | 50 | 1 |  |
-| section_4.1_p14 | app_n_responded | 1444 | 1444 | 1 |  |
-| section_4.1_p14 | app_n_subjects | 1980 | 1980 | 1 |  |
-| section_4.2_p14 | app_outcome_max | 6 | 6 | 1 |  |
-| section_4.2_p14 | app_outcome_min | 0 | -1.55889440680195e-15 | 1 |  |
-| section_4.2_p14 | txt_ci_width_ds_ps | 1.23 | 1.22561085834396 | 1 |  |
-| section_4.2_p14 | txt_ci_width_no_ds | 3.50 | 3.50496018440374 | 1 |  |
-| section_4.2_p14 | txt_ds_ps_ci_lower | -0.53 | -0.529010551320638 | 1 |  |
-| section_4.2_p14 | txt_ds_ps_ci_upper | 0.70 | 0.696600307023322 | 1 |  |
-| section_4.2_p14 | txt_ds_ps_wcb_high | 0.53 | 0.525683688852529 | 1 |  |
-| section_4.2_p14 | txt_ds_ps_wcb_low | -0.34 | -0.344389910863888 | 1 |  |
-| section_4.2_p14 | txt_ds_wcb_high | 0.57 | 0.571815728388134 | 1 |  |
-| section_4.2_p14 | txt_ds_wcb_low | -0.34 | -0.34174537662934 | 1 |  |
-| section_4.2_p14 | txt_naive_ate_coef | 0.126 | 0.125886650690804 | 1 |  |
-| section_4.2_p14 | txt_naive_ate_pval | 0.057 | 0.0571779950234041 | 1 |  |
-| section_4.2_p14 | txt_naive_ate_se | 0.066 | 0.0661527954807814 | 1 |  |
-| section_4.2_p14 | txt_no_ds_ci_lower | -1.67 | -1.66907903885775 | 1 |  |
-| section_4.2_p14 | txt_no_ds_ci_upper | 1.84 | 1.83588114554598 | 1 |  |
-| section_4.2_p14 | txt_no_ds_wcb_high | 1.71 | 1.70966762747749 | 1 |  |
-| section_4.2_p14 | txt_no_ds_wcb_low | -1.54 | -1.53914496339566 | 1 |  |
-| section_4.2_p14 | txt_reduction_pct | 0.65 | 0.650321032519101 | 1 |  |
-| section_4.3_p15 | app_naive_sig_10 |  |  |  | 1 |
-| section_4.3_p15 | app_no_delta_star_05 |  |  |  | 1 |
-| section_4.3_p15 | txt_delta_star | 0.07 | 0.0707070707070707 | 1 |  |
-| table_1 | t1_moderate_did_not_respond | 264 | 264 | 1 |  |
-| table_1 | t1_moderate_invited | 50 | 50 | 1 |  |
-| table_1 | t1_moderate_n_initial | 995 | 995 | 1 |  |
-| table_1 | t1_moderate_responded | 731 | 731 | 1 |  |
-| table_1 | t1_moderate_responded_to_invitation | 39 | 39 | 1 |  |
-| table_1 | t1_polarized_did_not_respond | 272 | 272 | 1 |  |
-| table_1 | t1_polarized_invited | 50 | 50 | 1 |  |
-| table_1 | t1_polarized_n_initial | 985 | 985 | 1 |  |
-| table_1 | t1_polarized_responded | 713 | 713 | 1 |  |
-| table_1 | t1_polarized_responded_to_invitation | 33 | 33 | 1 |  |
-| table_1 | t1_total_did_not_respond | 536 | 536 | 1 |  |
-| table_1 | t1_total_invited | 100 | 100 | 1 |  |
-| table_1 | t1_total_n_initial | 1980 | 1980 | 1 |  |
-| table_1 | t1_total_responded | 1444 | 1444 | 1 |  |
-| table_1 | t1_total_responded_to_invitation | 72 | 72 | 1 |  |
-| table_2 | app_samples_similar |  |  |  | 1 |
-| table_2 | t2_moderate_ds_mean | 3.583 | 3.58333333333333 | 1 |  |
-| table_2 | t2_moderate_ds_n | 39 | 39 | 1 |  |
-| table_2 | t2_moderate_ds_sd | 1.367 | 1.36730301830269 | 1 |  |
-| table_2 | t2_moderate_ir_mean | 3.542 | 3.54206566347469 | 1 |  |
-| table_2 | t2_moderate_ir_n | 731 | 731 | 1 |  |
-| table_2 | t2_moderate_ir_sd | 1.243 | 1.2426600835923 | 1 |  |
-| table_2 | t2_polarized_ds_mean | 3.826 | 3.82575757575758 | 1 |  |
-| table_2 | t2_polarized_ds_n | 33 | 33 | 1 |  |
-| table_2 | t2_polarized_ds_sd | 1.313 | 1.31322130252061 | 1 |  |
-| table_2 | t2_polarized_ir_mean | 3.668 | 3.6679523141655 | 1 |  |
-| table_2 | t2_polarized_ir_n | 713 | 713 | 1 |  |
-| table_2 | t2_polarized_ir_sd | 1.270 | 1.27045080160387 | 1 |  |
-| table_3 | app_ds_narrows |  |  |  | 1 |
-| table_3 | app_wcb_uninformative |  |  |  | 1 |
-| table_3 | t3_ds_ci_lower | -0.5283 | -0.52830967410789 | 1 |  |
-| table_3 | t3_ds_ci_upper | 0.7452 | 0.745174826433894 | 1 |  |
-| table_3 | t3_ds_ps_ci_lower | -0.5290 | -0.529010551320638 | 1 |  |
-| table_3 | t3_ds_ps_ci_upper | 0.6966 | 0.696600307023322 | 1 |  |
-| table_3 | t3_ds_ps_var_high | 0.0108 | 0.0107972726598501 | 1 |  |
-| table_3 | t3_ds_ps_var_low | 0.0126 | 0.0125981273119329 | 1 |  |
-| table_3 | t3_ds_ps_wcb_high | 0.5257 | 0.525683688852529 | 1 |  |
-| table_3 | t3_ds_ps_wcb_low | -0.3444 | -0.344389910863888 | 1 |  |
-| table_3 | t3_ds_var_high | 0.0111 | 0.0111080739914738 | 1 |  |
-| table_3 | t3_ds_var_low | 0.0129 | 0.0128647858310974 | 1 |  |
-| table_3 | t3_ds_wcb_high | 0.5718 | 0.571815728388134 | 1 |  |
-| table_3 | t3_ds_wcb_low | -0.3417 | -0.34174537662934 | 1 |  |
-| table_3 | t3_no_ds_ci_lower | -1.6691 | -1.66907903885775 | 1 |  |
-| table_3 | t3_no_ds_ci_upper | 1.8359 | 1.83588114554598 | 1 |  |
-| table_3 | t3_no_ds_var_high | 0.0059 | 0.00588785669626298 | 1 |  |
-| table_3 | t3_no_ds_var_low | 0.0062 | 0.0062401008346893 | 1 |  |
-| table_3 | t3_no_ds_wcb_high | 1.7097 | 1.70966762747749 | 1 |  |
-| table_3 | t3_no_ds_wcb_low | -1.5391 | -1.53914496339566 | 1 |  |
-| table_a1 | ta1_all_ex_wave1_n | 2156 | 2156 | 1 |  |
-| table_a1 | ta1_all_ex_wave1_r2 | 0.001 | 0.000969193379921518 | 1 |  |
-| table_a1 | ta1_all_ex_wave2_n | 2156 | 2156 | 1 |  |
-| table_a1 | ta1_all_ex_wave2_r2 | 0.0004 | 0.000359806687159292 | 1 |  |
-| table_a1 | ta1_all_pp_wave1_n | 2156 | 2156 | 1 |  |
-| table_a1 | ta1_all_pp_wave1_r2 | 0.024 | 0.0239507001082565 | 1 |  |
-| table_a1 | ta1_all_pp_wave2_n | 2156 | 2156 | 1 |  |
-| table_a1 | ta1_all_pp_wave2_r2 | 0.002 | 0.00174424183477495 | 1 |  |
-| table_a1 | ta1_constant_ex_wave1_coef | 1.531 | 1.53146374829 | 1 |  |
-| table_a1 | ta1_constant_ex_wave1_se | 0.024 | 0.0243596218569332 | 1 |  |
-| table_a1 | ta1_constant_ex_wave2_coef | 1.617 | 1.61662106703145 | 1 |  |
-| table_a1 | ta1_constant_ex_wave2_se | 0.024 | 0.024150796568631 | 1 |  |
-| table_a1 | ta1_constant_pp_wave1_coef | 3.108 | 3.10841313269491 | 1 |  |
-| table_a1 | ta1_constant_pp_wave1_se | 0.046 | 0.046462289784369 | 1 |  |
-| table_a1 | ta1_constant_pp_wave2_coef | 3.542 | 3.54206566347466 | 1 |  |
-| table_a1 | ta1_constant_pp_wave2_se | 0.046 | 0.0459614434759558 | 1 |  |
-| table_a1 | ta1_placebo_ex_wave1_coef | 0.019 | 0.0190980494627954 | 1 |  |
-| table_a1 | ta1_placebo_ex_wave1_se | 0.035 | 0.035282865017696 | 1 |  |
-| table_a1 | ta1_placebo_ex_wave2_coef | -0.011 | -0.010581741188767 | 1 |  |
-| table_a1 | ta1_placebo_ex_wave2_se | 0.034 | 0.0343376300527564 | 1 |  |
-| table_a1 | ta1_placebo_pp_wave1_coef | 0.352 | 0.352378065806935 | 1 |  |
-| table_a1 | ta1_placebo_pp_wave1_se | 0.067 | 0.067434267815023 | 1 |  |
-| table_a1 | ta1_placebo_pp_wave2_coef | 0.042 | 0.041501752255645 | 1 |  |
-| table_a1 | ta1_placebo_pp_wave2_se | 0.066 | 0.0656684123731185 | 1 |  |
-| table_a1 | ta1_polarized_ex_wave1_coef | -0.031 | -0.0311131171539694 | 1 |  |
-| table_a1 | ta1_polarized_ex_wave1_se | 0.034 | 0.034340859741032 | 1 |  |
-| table_a1 | ta1_polarized_ex_wave2_coef | -0.030 | -0.0296645452923338 | 1 |  |
-| table_a1 | ta1_polarized_ex_wave2_se | 0.034 | 0.03402111975226 | 1 |  |
-| table_a1 | ta1_polarized_pp_wave1_coef | 0.468 | 0.468375086098889 | 1 |  |
-| table_a1 | ta1_polarized_pp_wave1_se | 0.067 | 0.0665244501080027 | 1 |  |
-| table_a1 | ta1_polarized_pp_wave2_coef | 0.126 | 0.125886650690804 | 1 |  |
-| table_a1 | ta1_polarized_pp_wave2_se | 0.066 | 0.0661527954807814 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_ci_lower | -0.4778 | -0.477842687179526 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_ci_upper | 0.5769 | 0.57692983337372 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_var_high | 0.0067 | 0.00666486134438053 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_var_low | 0.0083 | 0.0082562481709875 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_wcb_high | 0.4426 | 0.442646282695529 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_ex_wcb_low | -0.3284 | -0.328384873083365 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_pp_ci_lower | -0.6119 | -0.611862038531696 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_pp_ci_upper | 0.5044 | 0.504351636768822 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_pp_var_high | 0.0114 | 0.0114143454384199 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_pp_var_low | 0.0106 | 0.0106127353002281 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_pp_wcb_high | 0.3286 | 0.328618863548512 | 1 |  |
-| table_a2 | ta2_mod_vs_placebo_pp_wcb_low | -0.4424 | -0.442412292230382 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_ci_lower | -0.6087 | -0.608731543014259 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_ci_upper | 0.6032 | 0.603194110577457 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_var_high | 0.0095 | 0.00953316194586098 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_var_low | 0.0070 | 0.00701487544541756 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_wcb_high | 0.4426 | 0.442594036170701 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_ex_wcb_low | -0.4710 | -0.470967068846773 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_pp_ci_lower | -0.5283 | -0.52830967410789 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_pp_ci_upper | 0.7452 | 0.745174826433894 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_pp_var_high | 0.0111 | 0.0111080739914738 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_pp_var_low | 0.0129 | 0.0128647858310974 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_pp_wcb_high | 0.5718 | 0.571815728388134 | 1 |  |
-| table_a2 | ta2_pol_vs_mod_pp_wcb_low | -0.3417 | -0.34174537662934 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_ci_lower | -0.6004 | -0.600425131607832 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_ci_upper | 0.6944 | 0.694385360492085 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_var_high | 0.0094 | 0.00938841779116446 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_var_low | 0.0085 | 0.00846151811732802 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_wcb_high | 0.5350 | 0.535009163087335 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_ex_wcb_low | -0.4491 | -0.449120786151244 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_pp_ci_lower | -0.6171 | -0.617118472710443 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_pp_ci_upper | 0.7262 | 0.726201234202598 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_pp_var_high | 0.0114 | 0.0114487996375541 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_pp_var_low | 0.0124 | 0.012403901338986 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_pp_wcb_high | 0.5502 | 0.550203436157751 | 1 |  |
-| table_a2 | ta2_pol_vs_placebo_pp_wcb_low | -0.4339 | -0.433926513080827 | 1 |  |
+| Appendix Figure 1 | appx_ci_shrinks_region_does_not |  |  |  | TRUE |
+| Appendix Table 1 | ta1_all_ex_wave1_n | 2156 | 2156 | TRUE |  |
+| Appendix Table 1 | ta1_all_ex_wave1_r2 | 0.001 | 0.000969193379921518 | TRUE |  |
+| Appendix Table 1 | ta1_all_ex_wave2_n | 2156 | 2156 | TRUE |  |
+| Appendix Table 1 | ta1_all_ex_wave2_r2 | 0.0004 | 0.000359806687159292 | TRUE |  |
+| Appendix Table 1 | ta1_all_pp_wave1_n | 2156 | 2156 | TRUE |  |
+| Appendix Table 1 | ta1_all_pp_wave1_r2 | 0.024 | 0.0239507001082565 | TRUE |  |
+| Appendix Table 1 | ta1_all_pp_wave2_n | 2156 | 2156 | TRUE |  |
+| Appendix Table 1 | ta1_all_pp_wave2_r2 | 0.002 | 0.00174424183477495 | TRUE |  |
+| Appendix Table 1 | ta1_constant_ex_wave1_coef | 1.531 | 1.53146374829 | TRUE |  |
+| Appendix Table 1 | ta1_constant_ex_wave1_se | 0.024 | 0.0243596218569332 | TRUE |  |
+| Appendix Table 1 | ta1_constant_ex_wave2_coef | 1.617 | 1.61662106703145 | TRUE |  |
+| Appendix Table 1 | ta1_constant_ex_wave2_se | 0.024 | 0.024150796568631 | TRUE |  |
+| Appendix Table 1 | ta1_constant_pp_wave1_coef | 3.108 | 3.10841313269491 | TRUE |  |
+| Appendix Table 1 | ta1_constant_pp_wave1_se | 0.046 | 0.046462289784369 | TRUE |  |
+| Appendix Table 1 | ta1_constant_pp_wave2_coef | 3.542 | 3.54206566347466 | TRUE |  |
+| Appendix Table 1 | ta1_constant_pp_wave2_se | 0.046 | 0.0459614434759558 | TRUE |  |
+| Appendix Table 1 | ta1_placebo_ex_wave1_coef | 0.019 | 0.0190980494627954 | TRUE |  |
+| Appendix Table 1 | ta1_placebo_ex_wave1_se | 0.035 | 0.035282865017696 | TRUE |  |
+| Appendix Table 1 | ta1_placebo_ex_wave2_coef | -0.011 | -0.010581741188767 | TRUE |  |
+| Appendix Table 1 | ta1_placebo_ex_wave2_se | 0.034 | 0.0343376300527564 | TRUE |  |
+| Appendix Table 1 | ta1_placebo_pp_wave1_coef | 0.352 | 0.352378065806935 | TRUE |  |
+| Appendix Table 1 | ta1_placebo_pp_wave1_se | 0.067 | 0.067434267815023 | TRUE |  |
+| Appendix Table 1 | ta1_placebo_pp_wave2_coef | 0.042 | 0.041501752255645 | TRUE |  |
+| Appendix Table 1 | ta1_placebo_pp_wave2_se | 0.066 | 0.0656684123731185 | TRUE |  |
+| Appendix Table 1 | ta1_polarized_ex_wave1_coef | -0.031 | -0.0311131171539694 | TRUE |  |
+| Appendix Table 1 | ta1_polarized_ex_wave1_se | 0.034 | 0.034340859741032 | TRUE |  |
+| Appendix Table 1 | ta1_polarized_ex_wave2_coef | -0.030 | -0.0296645452923338 | TRUE |  |
+| Appendix Table 1 | ta1_polarized_ex_wave2_se | 0.034 | 0.03402111975226 | TRUE |  |
+| Appendix Table 1 | ta1_polarized_pp_wave1_coef | 0.468 | 0.468375086098889 | TRUE |  |
+| Appendix Table 1 | ta1_polarized_pp_wave1_se | 0.067 | 0.0665244501080027 | TRUE |  |
+| Appendix Table 1 | ta1_polarized_pp_wave2_coef | 0.126 | 0.125886650690804 | TRUE |  |
+| Appendix Table 1 | ta1_polarized_pp_wave2_se | 0.066 | 0.0661527954807814 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_ci_lower | -0.4778 | -0.477842687179526 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_ci_upper | 0.5769 | 0.57692983337372 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_var_high | 0.0067 | 0.00666486134438053 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_var_low | 0.0083 | 0.0082562481709875 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_wcb_high | 0.4426 | 0.442646282695529 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_ex_wcb_low | -0.3284 | -0.328384873083365 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_ci_lower | -0.6119 | -0.611862038531696 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_ci_upper | 0.5044 | 0.504351636768822 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_var_high | 0.0114 | 0.0114143454384199 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_var_low | 0.0106 | 0.0106127353002281 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_wcb_high | 0.3286 | 0.328618863548512 | TRUE |  |
+| Appendix Table 2 | ta2_mod_vs_placebo_pp_wcb_low | -0.4424 | -0.442412292230382 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_ci_lower | -0.6087 | -0.608731543014259 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_ci_upper | 0.6032 | 0.603194110577457 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_var_high | 0.0095 | 0.00953316194586098 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_var_low | 0.0070 | 0.00701487544541756 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_wcb_high | 0.4426 | 0.442594036170701 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_ex_wcb_low | -0.4710 | -0.470967068846773 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_ci_lower | -0.5283 | -0.52830967410789 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_ci_upper | 0.7452 | 0.745174826433894 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_var_high | 0.0111 | 0.0111080739914738 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_var_low | 0.0129 | 0.0128647858310974 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_wcb_high | 0.5718 | 0.571815728388134 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_mod_pp_wcb_low | -0.3417 | -0.34174537662934 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_ci_lower | -0.6004 | -0.600425131607832 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_ci_upper | 0.6944 | 0.694385360492085 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_var_high | 0.0094 | 0.00938841779116446 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_var_low | 0.0085 | 0.00846151811732802 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_wcb_high | 0.5350 | 0.535009163087335 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_ex_wcb_low | -0.4491 | -0.449120786151244 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_ci_lower | -0.6171 | -0.617118472710443 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_ci_upper | 0.7262 | 0.726201234202598 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_var_high | 0.0114 | 0.0114487996375541 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_var_low | 0.0124 | 0.012403901338986 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_wcb_high | 0.5502 | 0.550203436157751 | TRUE |  |
+| Appendix Table 2 | ta2_pol_vs_placebo_pp_wcb_low | -0.4339 | -0.433926513080827 | TRUE |  |
+| appendix_section_1_p2 | appx_n_large | 80000 | 80000 | TRUE |  |
+| appendix_section_1_p2 | appx_n_small | 800 | 800 | TRUE |  |
+| appendix_section_1_p2 | appx_n2_large | 5000 | 5000 | TRUE |  |
+| appendix_section_1_p2 | appx_n2_small | 50 | 50 | TRUE |  |
+| appendix_section_1_p2 | appx_size_factor | 100 | 100 | TRUE |  |
+| appendix_section_1_p2 | appx_two_scenarios | 2 | 2 | TRUE |  |
+| appendix_section_2_p3 | appx_effect_diminished |  |  |  | TRUE |
+| appendix_section_2_p3 | appx_extremity_negligible |  |  |  | TRUE |
+| appendix_section_2_p3 | appx_wave1_effect | 0.468 | 0.468375086098889 | TRUE |  |
+| appendix_section_2_p3 | appx_wave1_effect_strong |  |  |  | TRUE |
+| appendix_section_2_p3 | appx_wave2_effect | 0.126 | 0.125886650690804 | TRUE |  |
+| appendix_section_3_p4 | appx_pairwise_columns | 6 | 6 | TRUE |  |
+| Figure 1 | sim_p2_zero_is_wcb |  |  |  | TRUE |
+| Figure 1 | sim_point_identified |  |  |  | TRUE |
+| Figure 1 | sim_region_smaller_in_p1 |  |  |  | TRUE |
+| Figure 1 | sim_width_shrinks_to_zero |  |  |  | TRUE |
+| Figure 2 | fig2_delta_star | 0.07 | 0.0707070707070707 | TRUE |  |
+| section_3_p11 | sim_n_followup | 50 | 50 | TRUE |  |
+| section_3_p11 | sim_n_total | 800 | 800 | TRUE |  |
+| section_3_p11 | sim_p1_max | 0.75 | 0.75 | TRUE |  |
+| section_3_p11 | sim_p1_min | 0.25 | 0.25 | TRUE |  |
+| section_3_p11 | sim_p2_max | 1 | 1 | TRUE |  |
+| section_3_p11 | sim_p2_min | 0 | 0 | TRUE |  |
+| section_3_p11 | sim_true_ate | 0 | 0 | TRUE |  |
+| section_3_p12 | sim_n_scenarios | 3 | 3 | TRUE |  |
+| section_3_p12 | sim_p1_scenario_high | 0.75 | 0.75 | TRUE |  |
+| section_3_p12 | sim_p1_scenario_low | 0.25 | 0.25 | TRUE |  |
+| section_3_p12 | sim_p1_scenario_mid | 0.50 | 0.5 | TRUE |  |
+| section_4.1_p14 | app_n_completed | 72 | 72 | TRUE |  |
+| section_4.1_p14 | app_n_invited | 100 | 100 | TRUE |  |
+| section_4.1_p14 | app_n_invited_per_arm | 50 | 50 | TRUE |  |
+| section_4.1_p14 | app_n_responded | 1444 | 1444 | TRUE |  |
+| section_4.1_p14 | app_n_subjects | 1980 | 1980 | TRUE |  |
+| section_4.2_p14 | app_outcome_max | 6 | 6 | TRUE |  |
+| section_4.2_p14 | app_outcome_min | 0 | -1.55889440680195e-15 | TRUE |  |
+| section_4.2_p14 | txt_ci_width_ds_ps | 1.23 | 1.22561085834396 | TRUE |  |
+| section_4.2_p14 | txt_ci_width_no_ds | 3.50 | 3.50496018440374 | TRUE |  |
+| section_4.2_p14 | txt_ds_ps_ci_lower | -0.53 | -0.529010551320638 | TRUE |  |
+| section_4.2_p14 | txt_ds_ps_ci_upper | 0.70 | 0.696600307023322 | TRUE |  |
+| section_4.2_p14 | txt_ds_ps_wcb_high | 0.53 | 0.525683688852529 | TRUE |  |
+| section_4.2_p14 | txt_ds_ps_wcb_low | -0.34 | -0.344389910863888 | TRUE |  |
+| section_4.2_p14 | txt_ds_wcb_high | 0.57 | 0.571815728388134 | TRUE |  |
+| section_4.2_p14 | txt_ds_wcb_low | -0.34 | -0.34174537662934 | TRUE |  |
+| section_4.2_p14 | txt_naive_ate_coef | 0.126 | 0.125886650690804 | TRUE |  |
+| section_4.2_p14 | txt_naive_ate_pval | 0.057 | 0.0571779950234041 | TRUE |  |
+| section_4.2_p14 | txt_naive_ate_se | 0.066 | 0.0661527954807814 | TRUE |  |
+| section_4.2_p14 | txt_no_ds_ci_lower | -1.67 | -1.66907903885775 | TRUE |  |
+| section_4.2_p14 | txt_no_ds_ci_upper | 1.84 | 1.83588114554598 | TRUE |  |
+| section_4.2_p14 | txt_no_ds_wcb_high | 1.71 | 1.70966762747749 | TRUE |  |
+| section_4.2_p14 | txt_no_ds_wcb_low | -1.54 | -1.53914496339566 | TRUE |  |
+| section_4.2_p14 | txt_reduction_pct | 0.65 | 0.650321032519101 | TRUE |  |
+| section_4.3_p15 | app_naive_sig_10 |  |  |  | TRUE |
+| section_4.3_p15 | app_no_delta_star_05 |  |  |  | TRUE |
+| section_4.3_p15 | txt_delta_star | 0.07 | 0.0707070707070707 | TRUE |  |
+| Table 1 | t1_moderate_did_not_respond | 264 | 264 | TRUE |  |
+| Table 1 | t1_moderate_invited | 50 | 50 | TRUE |  |
+| Table 1 | t1_moderate_n_initial | 995 | 995 | TRUE |  |
+| Table 1 | t1_moderate_responded | 731 | 731 | TRUE |  |
+| Table 1 | t1_moderate_responded_to_invitation | 39 | 39 | TRUE |  |
+| Table 1 | t1_polarized_did_not_respond | 272 | 272 | TRUE |  |
+| Table 1 | t1_polarized_invited | 50 | 50 | TRUE |  |
+| Table 1 | t1_polarized_n_initial | 985 | 985 | TRUE |  |
+| Table 1 | t1_polarized_responded | 713 | 713 | TRUE |  |
+| Table 1 | t1_polarized_responded_to_invitation | 33 | 33 | TRUE |  |
+| Table 1 | t1_total_did_not_respond | 536 | 536 | TRUE |  |
+| Table 1 | t1_total_invited | 100 | 100 | TRUE |  |
+| Table 1 | t1_total_n_initial | 1980 | 1980 | TRUE |  |
+| Table 1 | t1_total_responded | 1444 | 1444 | TRUE |  |
+| Table 1 | t1_total_responded_to_invitation | 72 | 72 | TRUE |  |
+| Table 2 | app_samples_similar |  |  |  | TRUE |
+| Table 2 | t2_moderate_ds_mean | 3.583 | 3.58333333333333 | TRUE |  |
+| Table 2 | t2_moderate_ds_n | 39 | 39 | TRUE |  |
+| Table 2 | t2_moderate_ds_sd | 1.367 | 1.36730301830269 | TRUE |  |
+| Table 2 | t2_moderate_ir_mean | 3.542 | 3.54206566347469 | TRUE |  |
+| Table 2 | t2_moderate_ir_n | 731 | 731 | TRUE |  |
+| Table 2 | t2_moderate_ir_sd | 1.243 | 1.2426600835923 | TRUE |  |
+| Table 2 | t2_polarized_ds_mean | 3.826 | 3.82575757575758 | TRUE |  |
+| Table 2 | t2_polarized_ds_n | 33 | 33 | TRUE |  |
+| Table 2 | t2_polarized_ds_sd | 1.313 | 1.31322130252061 | TRUE |  |
+| Table 2 | t2_polarized_ir_mean | 3.668 | 3.6679523141655 | TRUE |  |
+| Table 2 | t2_polarized_ir_n | 713 | 713 | TRUE |  |
+| Table 2 | t2_polarized_ir_sd | 1.270 | 1.27045080160387 | TRUE |  |
+| Table 3 | app_ds_narrows |  |  |  | TRUE |
+| Table 3 | app_wcb_uninformative |  |  |  | TRUE |
+| Table 3 | t3_ds_ci_lower | -0.5283 | -0.52830967410789 | TRUE |  |
+| Table 3 | t3_ds_ci_upper | 0.7452 | 0.745174826433894 | TRUE |  |
+| Table 3 | t3_ds_ps_ci_lower | -0.5290 | -0.529010551320638 | TRUE |  |
+| Table 3 | t3_ds_ps_ci_upper | 0.6966 | 0.696600307023322 | TRUE |  |
+| Table 3 | t3_ds_ps_var_high | 0.0108 | 0.0107972726598501 | TRUE |  |
+| Table 3 | t3_ds_ps_var_low | 0.0126 | 0.0125981273119329 | TRUE |  |
+| Table 3 | t3_ds_ps_wcb_high | 0.5257 | 0.525683688852529 | TRUE |  |
+| Table 3 | t3_ds_ps_wcb_low | -0.3444 | -0.344389910863888 | TRUE |  |
+| Table 3 | t3_ds_var_high | 0.0111 | 0.0111080739914738 | TRUE |  |
+| Table 3 | t3_ds_var_low | 0.0129 | 0.0128647858310974 | TRUE |  |
+| Table 3 | t3_ds_wcb_high | 0.5718 | 0.571815728388134 | TRUE |  |
+| Table 3 | t3_ds_wcb_low | -0.3417 | -0.34174537662934 | TRUE |  |
+| Table 3 | t3_no_ds_ci_lower | -1.6691 | -1.66907903885775 | TRUE |  |
+| Table 3 | t3_no_ds_ci_upper | 1.8359 | 1.83588114554598 | TRUE |  |
+| Table 3 | t3_no_ds_var_high | 0.0059 | 0.00588785669626298 | TRUE |  |
+| Table 3 | t3_no_ds_var_low | 0.0062 | 0.0062401008346893 | TRUE |  |
+| Table 3 | t3_no_ds_wcb_high | 1.7097 | 1.70966762747749 | TRUE |  |
+| Table 3 | t3_no_ds_wcb_low | -1.5391 | -1.53914496339566 | TRUE |  |
 
 Maintained rewrite verification: published value against rewrite output.
 A row with a Holds verdict and no value is a claim about shape rather
 than about a number.
 
-Every comparable row carries `match_rewrite = 1`: **158** values
+Every comparable row carries `match_rewrite = TRUE`: **158** values
 produced by the maintained rewrite, all matching the published paper to
 the precision the page prints, and **13** descriptive claims that hold.
 Every value here is read out of a file in `maintained/output/` by
@@ -820,24 +826,24 @@ not of the transcription.
 
 | Item      | Value                  |
 |:----------|:-----------------------|
-| R version | 4.6.1                  |
+| R version | 4.6.2                  |
 | Platform  | aarch64-apple-darwin23 |
-| Date run  | 2026-11-06             |
+| Date run  | 2026-11-12             |
 
-| Package      | Version    |
-|:-------------|:-----------|
-| attrition    | 1.0.0      |
-| estimatr     | 2.0.1.9000 |
-| modelsummary | 2.6.0      |
-| dplyr        | 1.2.1      |
-| ggplot2      | 4.0.3      |
-| tidyr        | 1.3.2      |
-| purrr        | 1.2.2      |
-| readr        | 2.2.0      |
-| here         | 1.0.2      |
-| gridExtra    | 2.3        |
-| knitr        | 1.51       |
-| kableExtra   | 1.4.0      |
+| Package      | Version |
+|:-------------|:--------|
+| attrition    | 1.0.0   |
+| estimatr     | 2.0.1   |
+| modelsummary | 2.6.0   |
+| dplyr        | 1.2.1   |
+| ggplot2      | 4.0.3   |
+| tidyr        | 1.3.2   |
+| purrr        | 1.2.2   |
+| readr        | 2.2.0   |
+| here         | 1.0.2   |
+| gridExtra    | 2.3.1   |
+| knitr        | 1.52    |
+| kableExtra   | 1.4.1   |
 
 Package versions used for the run behind this report.
 

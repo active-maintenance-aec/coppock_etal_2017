@@ -1,0 +1,9 @@
+float,published_numbers,covered,reproduced_by_rewrite,reproduced_by_archive,plotted,plotted_reproduced,note
+Table 1,15,15,15,15,NA,NA,NA
+Table 2,12,12,12,12,NA,NA,NA
+Table 3,18,18,18,18,NA,NA,NA
+Figure 1,0,0,0,0,18,18,Prints no numbers on its face; plotted counts 12 interval curves and 6 width curves at N = 800.
+Figure 2,1,1,1,0,4,4,Prints delta* = 0.07 on its face; plotted counts the two bound lines and the two edges of the 90% confidence band.
+Appendix Table 1,32,32,32,32,NA,NA,NA
+Appendix Table 2,36,36,36,36,NA,NA,NA
+Appendix Figure 1,0,0,0,0,36,36,"Prints no numbers on its face; plotted counts 12 interval curves and 6 width curves at each of N = 800 and N = 80,000."

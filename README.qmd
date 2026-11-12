@@ -57,7 +57,7 @@ This repository holds the actively maintained replication code for Coppock, Gerb
 
 **The data are not redistributed here.** The deposit is 231 KB across seven files and lives at Harvard Dataverse, which is the only copy this repository points at. `download_original.R` fetches it and verifies every file; `original_manifest.csv` pins the file identifiers, sizes and checksums, so the exact bytes this code was written against are recorded in version control even though the bytes themselves are not.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the hand extraction of the article, `build_ground_truth.R` generates the comparison and runs the coverage gate, and `coppock_etal_2017_ground_truth.csv` is what it writes. `original/` is created by the download script and is deliberately absent from the repository. `errata.qmd` corrects the published article, rendering to `coppock_etal_2017_errata.pdf` at the root. This file is the reproducibility report, also available as a PDF in `report/`.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the hand extraction of the article, `build_ground_truth.R` generates the comparison and runs the coverage gate, and `coppock_etal_2017_ground_truth.csv` is what it writes, with `float_coverage.csv` beside it. `run_archive.R` runs the deposited scripts from a scratch copy of the deposit and writes `archive_run_status.csv` and `archive_overwrites.csv`; it installs the deposit's own packages and is run by hand rather than from `run_all.R`. `original/` is created by the download script and is deliberately absent from the repository. `errata.qmd` corrects the published article, rendering to `coppock_etal_2017_errata.pdf` at the root. This file is the reproducibility report, also available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains. See `LICENSE`.
 
@@ -224,14 +224,13 @@ Coverage of the published floats is complete for the tables: 15 of 15 cells in T
 
 ```{r gt_table}
 gt |>
-  left_join(select(claims, claim_id, digits), by = "claim_id") |>
   # The archive's values are shown at the precision the page prints, so that a small
   # R-squared arrives as 0.0004 rather than as as.character()'s 4e-04.
   mutate(value_script = if_else(is.na(value_script), NA_character_,
                                 sprintf(paste0("%.", replace_na(digits, 0L), "f"),
                                         value_script))) |>
   mutate(across(everything(), \(x) replace_na(as.character(x), ""))) |>
-  select(table_figure, claim_id, value_paper, value_script, match) |>
+  select(location, claim_id, value_paper, value_script, match) |>
   kable(
     booktabs = TRUE,
     col.names = c("Location", "Claim", "Paper", "Archive", "Match"),
@@ -364,7 +363,7 @@ Neither figure carries printed estimates, so there is no panel label to check th
 ```{r rewrite_verify}
 gt |>
   mutate(across(everything(), \(x) replace_na(as.character(x), ""))) |>
-  select(table_figure, claim_id, value_paper, value_rewrite, match_rewrite, holds) |>
+  select(location, claim_id, value_paper, value_rewrite, match_rewrite, holds) |>
   kable(
     booktabs = TRUE,
     col.names = c("Location", "Claim", "Paper", "Rewrite", "Match", "Holds"),
@@ -375,7 +374,7 @@ gt |>
     column_spec(2, width = "5cm"))
 ```
 
-Every comparable row carries `match_rewrite = 1`: **`r n_rewrite_match`** values produced by the maintained rewrite, all matching the published paper to the precision the page prints, and **`r n_descriptive_hold`** descriptive claims that hold. Every value here is read out of a file in `maintained/output/` by `build_ground_truth.R` rather than transcribed, so a value in this table that disagreed with the pipeline would be a failure of the pipeline and not of the transcription.
+Every comparable row carries `match_rewrite = TRUE`: **`r n_rewrite_match`** values produced by the maintained rewrite, all matching the published paper to the precision the page prints, and **`r n_descriptive_hold`** descriptive claims that hold. Every value here is read out of a file in `maintained/output/` by `build_ground_truth.R` rather than transcribed, so a value in this table that disagreed with the pipeline would be a failure of the pipeline and not of the transcription.
 
 # R environment
 

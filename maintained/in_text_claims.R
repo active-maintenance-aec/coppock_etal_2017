@@ -1,6 +1,6 @@
 # coppock_etal_2017/maintained/in_text_claims.R
-# Output: printed CLAIM lines only; no files
-# Depends on: maintained/output/, ground_truth/published_claims.csv
+# Output: printed CLAIM lines and a CLAIM SUMMARY line; no files
+# Depends on: maintained/output/, ground_truth/published_claims.csv, errata_entries.csv
 # Description: One block per published claim, each carrying the article's own sentence and
 #   then recomputing the number from the pipeline's committed output. This is the second
 #   instrument. It never reads ground_truth/coppock_etal_2017_ground_truth.csv, it never
@@ -14,7 +14,7 @@
 #
 #       CLAIM <claim_id> = <value> || <label>
 #
-#   which ground_truth/check_claims.R parses to check coverage against
+#   which ground_truth/build_ground_truth.R parses to check coverage against
 #   ground_truth/published_claims.csv. The value is printed at the number of decimals that
 #   file records for the claim, so it can be laid against the page without a second
 #   rounding. A descriptive claim, which states a shape rather than a number, prints 1 when
@@ -33,6 +33,11 @@ out <- function(f) read_csv(here::here("maintained", "output", f), show_col_type
 published <- read_csv(here::here("ground_truth", "published_claims.csv"),
                       col_types = cols(.default = col_character()))
 
+# The errata spine, which errata.qmd writes. Every column is read as character so that a
+# corrected value keeps the digits it prints.
+errata <- read_csv(here::here("errata_entries.csv"),
+                   col_types = cols(.default = col_character()))
+
 # The scoring machinery comes from excheckr, which carries the verdict ladder, the
 # typography parser and the printed form this file used to define for itself. What is
 # passed here is what the package cannot know: the extraction, the column its prose
@@ -48,9 +53,10 @@ published <- read_csv(here::here("ground_truth", "published_claims.csv"),
 # and four decimals and one appendix R-squared at three beside its neighbour at four,
 # which is the case reading the typography gets right and a rule from the value cannot.
 #
-# There is no errata note for this paper, so no claim here can reach corrected, STALE or
-# DRIFT, and the gate that needs the spine reports itself skipped.
-claim_start(published = published, format = "id", label_column = "claim")
+# The errata spine is passed so that a claim an entry corrects is scored against the
+# correction. No entry names a claim today (every entry corrects prose, a heading, or a
+# citation), so no claim here can reach corrected, STALE, or DRIFT until one does.
+claim_start(published = published, errata = errata, format = "id", label_column = "claim")
 
 table_1 <- out("table_1_attrition.csv")
 table_2 <- out("table_2_outcome_means.csv")

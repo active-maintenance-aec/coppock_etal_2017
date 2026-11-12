@@ -198,6 +198,12 @@ value_placed <- pmap_lgl(quantified, function(...) {
   }
 })
 
+# The gate's result is written to the spine as values_in_spans, one logical per entry, so
+# a reader can see it without rerunning this chunk. An entry with no corrected values
+# carries NA, which today is every entry.
+entries <- entries |>
+  left_join(tibble(entry = quantified$entry, values_in_spans = value_placed), by = "entry")
+
 if (!all(value_placed)) {
   print(quantified |> filter(!value_placed) |> select(entry, title, corrected_values, corrected))
   stop("An entry's corrected_values are not in the spans of its corrected sentence.")
